@@ -13,6 +13,8 @@
 
         <link rel="stylesheet" href="css/normalize.min.css">
         <link rel="stylesheet" href="css/main.css">
+        <link rel="stylesheet" href="css/custom.css">
+
 
         <script src="js/vendor/modernizr-2.8.3-respond-1.4.2.min.js"></script>
     </head>
@@ -43,15 +45,29 @@
                     <header>
                         <h1>Heart AR test</h1>
                         <div>
-                            <a href="/assets/heart.usdz">
-                                <img height="300" width="300" src="/img/heart-thumbnail.png">
+                            <a href="/assets/heart.usdz" rel="ar">
+                                <img class="image-model" 
+                                    height="300" 
+                                    width="300" 
+                                    src="/img/heart-thumbnail.png"
+                                    srcset="/img/heart-thumbnail.png"
+                                    data-hires-status="pending">
                             </a>
                         </div>
                     </header>
                     <header>
-                        <h1>Custom AR test (.reality file)</h1>
+                        <h1>Custom indoorplant AR test </h1>
                         <div>
                             <a href="/assets/indoorplant_02.usdz">
+                                <img height="300" width="300" src="/img/star-thumbnail.png">
+                            </a>
+                        </div>
+                    </header>
+
+                    <header>
+                        <h1>Custom rose AR test </h1>
+                        <div>
+                            <a href="/assets/rose.usdz">
                                 <img height="300" width="300" src="/img/star-thumbnail.png">
                             </a>
                         </div>
