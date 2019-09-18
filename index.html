@@ -27,6 +27,12 @@
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
         <![endif]-->
 
+    <script type="module" src="https://unpkg.com/@google/model-viewer@0.3.1/dist/model-viewer.js">
+    </script>
+
+    <script nomodule src="https://unpkg.com/@google/model-viewer@0.3.1/dist/model-viewer-legacy.js">
+    </script>
+
     <div class="header-container">
         <header class="wrapper clearfix">
             <h1 class="title">Ryan's test site for ArKit3 :)</h1>
@@ -75,8 +81,6 @@
 
                 <header>
                     <h1>Custom rose AR test android</h1>
-                    <img width="300" src="https://free3d.com/imgd/l78852-rose-31675.jpg">
-                    </img>
                     <model-viewer src="/assets/rose.glb" alt="A 3D model of a rose" background-color="#70BCD1"
                         shadow-intensity="1" camera-controls interaction-prompt="auto" auto-rotate ar magic-leap>
                     </model-viewer>
@@ -84,8 +88,6 @@
 
                 <header>
                     <h1>Custom rose AR test hybrid</h1>
-                    <img width="300" src="https://free3d.com/imgd/l78852-rose-31675.jpg">
-                    </img>
                     <model-viewer src="/assets/rose.glb" ios-src="/assets/rose.usdz" alt="A 3D model of a rose"
                         background-color="#70BCD1" shadow-intensity="1" camera-controls interaction-prompt="auto"
                         auto-rotate ar magic-leap>
@@ -107,12 +109,6 @@
     <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
     <script src="js/main.js"></script>
-
-    <script type="module" src="https://unpkg.com/@google/model-viewer@0.3.1/dist/model-viewer.js">
-    </script>
-
-    <script nomodule src="https://unpkg.com/@google/model-viewer@0.3.1/dist/model-viewer-legacy.js">
-    </script>
 
     <!-- Google Analytics: change UA-XXXXX-X to be your site's ID. -->
     <script>
