@@ -10,7 +10,8 @@ const SETTINGS = {
   faceMeshGltfModelURL: 'HeadTest/glTF/head.glb',
   cubeMapURL: 'Bridge2/',
   offsetYZ: [0.3, 0], //offset of the model in 3D along vertical and depth axis
-  scale: 2.5 //width in 3D of the GLTF model
+  scale: 2.5, //width in 3D of the GLTF model
+  maxFaces: 4 //max number of detected faces
 };
 
 var THREECAMERA = null;
@@ -36,7 +37,7 @@ function init_threeScene(spec) {
       if (child.isMesh) {
         child.material.envMap = envMap;
         child.material.color.set( 0xff0000 );
-        // child.material.colorWrite = false;
+        child.material.colorWrite = false;
       }
       console.log(child);
     });
@@ -103,17 +104,22 @@ function init_threeScene(spec) {
     const ambientLight = new THREE.AmbientLight(0XFFFFFF, 1);
     threeStuffs.scene.add(ambientLight);
     // dispatch the model:
-    threeStuffs.faceObject.add(gltf.scene);
+    threeStuffs.faceObjects.forEach(function(faceObject){ //display the cube for each detected face
+      faceObject.add(gltf.scene.clone());
+    });
   }); //end gltfLoader.load callback
 
   
 
   //CREATE THE CAMERA
   THREECAMERA = THREE.JeelizHelper.create_camera();
+
+  
 } //end init_threeScene()
 
 //entry point, launched by body.onload():
 function main() {
+  document.getElementById('jeeFaceFilterCanvas').style.display = 'block';
   JeelizResizer.size_canvas({
     canvasId: 'jeeFaceFilterCanvas',
     isFullScreen: true,
@@ -134,7 +140,7 @@ function start() {
     },
     followZRot: true,
     canvasId: 'jeeFaceFilterCanvas',
-    NNCpath: '../../../dist/', //root of NNC.json file
+    NNCpath: 'dist/', //root of NNC.json file
     callbackReady: function (errCode, spec) {
       if (errCode) {
         console.log('AN ERROR HAPPENS. SORRY BRO :( . ERR =', errCode);
