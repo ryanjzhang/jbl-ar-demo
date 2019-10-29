@@ -6,12 +6,43 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>JBL LIVE 650BTNC | Wireless Over-Ear Noise-Cancelling Headphones</title>
+
+    <!-- Jeelizzzz-->
+    <link rel="stylesheet" href="css/styleFullScreen.css" type="text/css" />
+    <!-- Jeelizzzz-->
+
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/font.css">
+
+    <!--Jeeliz changes-->
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="content-language" content="en-EN" />
+    
+    <title>JEELIZ FACE FILTER : THREE.JS GLTF FULLSCREEN DEMO</title>
+    
+    <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
+    <script src="../_javascript/jeelizFaceFilter.js"></script>
+
+    <!-- INCLUDE THREE.JS -->
+    <script src="_javascript/three.js"></script>
+    <script src="_javascript/GLTFLoader.js"></script>
+    
+    <!-- INCLUDE JEELIZRESIZER -->
+    <script src="_javascript/JeelizResizer.js"></script>
+
+    <!-- INCLUDE JEELIZ THREE.JS HELPER -->
+    <script src="_javascript/JeelizThreejsHelper.js"></script>
+    
+    <!-- INCLUDE DEMO SCRIPT -->
+    <script src="_javascript/demo_gltf.js"></script>
+
+    <!-- INCLUDE FORK ME ON GITHUB BANNER -->
+    <script src="_javascript/widget.js"></script>
+    <!-- Jeeliz end-->
 </head>
 
-<body>
+<body onload="main()">
     <header>
         <nav class="navbar pencil">
             <div class="navbar-content">
@@ -207,6 +238,12 @@
                                 <i class="icon-support-headset"></i>
                                 <span>Levenslange ondersteuning</span></a>
                         </div>
+                        <!-- Jeeliz changes-->
+                        <div class="buttons">
+                            <button class="button is-info is-light" onclick=main()>Go AR!</button>
+                            <!-- <canvas width="600" height="600" id='jeeFaceFilterCanvas'></canvas> -->
+                          </div>
+                        <!-- Jeeliz changes-->
                     </div>
                 </div>
             </div>
@@ -255,6 +292,7 @@
             </div>
         </footer>
         <script type="text/javascript" src="lib/main.js"></script>
+
 </body>
 
 </html>
