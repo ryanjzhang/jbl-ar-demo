@@ -1,0 +1,264 @@
+@charset "utf-8";
+
+// Customization
+
+// You can easily customize Bulma with your own variables.
+// Just uncomment the following block to see the result.
+
+// 1. Import the initial variables
+@import "../node_modules/bulma/sass/utilities/initial-variables";
+
+// 2. Set your own initial variables
+// Update the blue shade, used for links
+$blue: #ff3300;
+// Add pink and its invert
+$pink: #ff8080;
+$pink-invert: #fff;
+// Update the sans-serif font family
+$family-sans-serif: "Helvetica", "Arial", sans-serif;
+
+// 3. Set the derived variables
+// Use the new pink as the primary color
+$primary: $pink;
+$primary-invert: $pink-invert;
+
+// 4. Import the rest of Bulma
+
+@import "../node_modules/bulma/bulma";
+
+$background-grey: #f8f8f8;
+$font-color: black;
+$divider: #e8e8e8;
+
+header {
+  padding: 0;
+  border-bottom: 1px solid $divider;
+}
+
+.navbar {
+  height: 80px;
+  padding: 0;
+
+  .navbar-item {
+    color: $font-color;
+  }
+  &.pencil {
+    background-color: $background-grey;
+    height: 2rem;
+    min-height: 0;
+    font-family: "HelveticaNeueW01-55Roma", Helvetica, sans-serif;
+    font-size: 14px;
+    .navbar-end {
+      height: 2rem;
+    }
+  }
+
+  .navbar-brand .navbar-item {
+    img {
+      width: 4rem;
+      height: 4rem;
+      max-height: none;
+    }
+  }
+}
+
+.navbar-content {
+  margin: 0 auto;
+  max-width: 1400px;
+  min-width: 320px;
+}
+
+#main {
+  margin: 0 auto;
+  max-width: 1400px;
+  min-width: 320px;
+  color: $font-color;
+
+  .columns {
+    margin: 0;
+    .photo-gallery {
+      background-color: none;
+    }
+    .product-details {
+      border-width: 0 1px 1px 1px;
+      border-style: solid;
+      border-color: $divider;
+      font-weight: bold;
+      background-color: $background-grey;
+    }
+    .product-title {
+      font-size: 42px;
+      letter-spacing: 0.032em;
+      font-weight: bold;
+      line-height: 1.1;
+      font-family: "HelveticaNeueW01-75Bold", Helvetica, sans-serif;
+      margin: 5px 0;
+      color: #333;
+    }
+    .product-description {
+      font-size: 14px;
+      font-weight: bold;
+      margin: 5px 0;
+      color: #333;
+      font-family: "HelveticaNeueW01-55Roma", Helvetica, sans-serif;
+    }
+    .review-stars {
+      display: flex;
+    }
+    ul {
+      margin-bottom: 10px;
+      margin-top: 10px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid $divider;
+
+      li {
+        font-weight: normal;
+        padding-bottom: 2px;
+        margin: 0;
+        padding: 0;
+        font-size: 14px;
+        font-family: "HelveticaNeueW01-55Roma", Helvetica, sans-serif;
+        color: #000000;
+        .refurbished-detailsLi {
+          height: 15px;
+          vertical-align: middle;
+          border: 0;
+        }
+      }
+    }
+    .product-price {
+      margin: 15px 0;
+      color: #ff3300;
+      font-family: "HelveticaNeueW01-55Roma", Helvetica, sans-serif;
+      font-weight: normal;
+      .price-sales {
+        font-size: 42px;
+      }
+      .price-each {
+        font-size: 20px;
+      }
+      .price-standard {
+        text-decoration: line-through;
+        color: #545454;
+        font-size: 18px;
+        margin-left: 10px;
+        display: inline-block;
+      }
+      .price-off-option {
+        color: #ff3300;
+        font-size: 14px;
+        background-color: #ffffff;
+        padding: 0 10px;
+        margin-left: 8px;
+        display: inline-block;
+        border: 1px solid #ff3300;
+        border-bottom-width: 2px;
+      }
+    }
+    .in-stock-msg {
+      font-family: "HelveticaNeueW01-75Bold", Helvetica, sans-serif;
+      font-size: 15px;
+      color: #2fb105;
+      display: inline-block;
+      margin: 2rem 0 2rem 0;
+    }
+    .whybuy-reason {
+      font-size: 14px;
+      color: #000000;
+      display: inline;
+    }
+  }
+
+  .breadcrumbs {
+    color: #ff3300;
+    font-family: "HelveticaNeueW01-75Bold", Helvetica, sans-serif;
+    font-size: 14px;
+  }
+}
+
+//swatches hehe
+$swatchsize: 2.2rem;
+$swatchstart: 1.2rem;
+$swatchtime: 0.4s;
+
+.icon-btn {
+  border-radius: $swatchsize;
+
+  width: $swatchsize;
+  height: $swatchsize;
+  margin: 0 5px;
+
+  position: relative;
+  display: inline-block;
+  text-align: center;
+  font-size: 2rem;
+  background: white;
+  border: 1px solid $divider;
+}
+
+.icon-btn span {
+  display: block;
+  border-radius: $swatchstart;
+  width: $swatchstart;
+  height: $swatchstart;
+
+  border: 1px solid #333;
+
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  /* bring your own prefixes */
+  transform: translate(-50%, -50%);
+
+  -webkit-transition: all$swatchtime;
+  -moz-transition: all $swatchtime;
+  -ms-transition: all $swatchtime;
+  -o-transition: all $swatchtime;
+  transition: all $swatchtime;
+}
+
+.icon-btn:hover span {
+  display: block;
+  border-radius: $swatchsize;
+  width: $swatchsize;
+  height: $swatchsize;
+}
+
+.swatchblack span {
+  background-color: #000000;
+}
+
+.swatchwhite span {
+  background-color: #ffffff;
+}
+.swatchblue span {
+  background-color: #3b4c64;
+}
+
+.icon-btn i {
+  color: white;
+  background: none;
+  height: $swatchsize;
+  width: $swatchsize;
+
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 10;
+  line-height: $swatchsize;
+
+  -webkit-transition: all $swatchtime;
+  -moz-transition: all $swatchtime;
+  -ms-transition: all $swatchtime;
+  -o-transition: all $swatchtime;
+  transition: all $swatchtime;
+}
+// .icon-btn .icon-circle {
+//   color: #000000;
+// }
+// .icon-btn .icon-circle {
+//   color: #ffffff;
+// }
+// .icon-btn .icon-circle {
+//   color: #3b4c64;
+// }

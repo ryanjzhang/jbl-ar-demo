@@ -1,0 +1,67 @@
+@font-face {
+  font-family: "HelveticaNeueW01-55Roma";
+  src: url("fonts/HelveticaNeueLTW02-55Roman.eot?#iefix");
+  src: url("fonts/HelveticaNeueLTW02-55Roman.eot?#iefix") format("eot"),
+    url("fonts/HelveticaNeueLTW02-55Roman.woff2") format("woff2"),
+    url("fonts/HelveticaNeueLTW02-55Roman.woff") format("woff"),
+    url("fonts/HelveticaNeueLTW02-55Roman.ttf") format("truetype");
+}
+@font-face {
+  font-family: "HelveticaNeueW01-65Medi";
+  src: url("fonts/HelveticaNeueLTW02-65Medium.eot?#iefix");
+  src: url("fonts/HelveticaNeueLTW02-65Medium.eot?#iefix") format("eot"),
+    url("fonts/HelveticaNeueLTW02-65Medium.woff2") format("woff2"),
+    url("fonts/HelveticaNeueLTW02-65Medium.woff") format("woff"),
+    url("fonts/HelveticaNeueLTW02-65Medium.ttf") format("truetype");
+}
+@font-face {
+  font-family: "HelveticaNeueW01-75Bold";
+  src: url("fonts/HelveticaNeueLTW02-75Bold.eot?#iefix");
+  src: url("fonts/HelveticaNeueLTW02-75Bold.eot?#iefix") format("eot"),
+    url("fonts/HelveticaNeueLTW02-75Bold.woff2") format("woff2"),
+    url("fonts/HelveticaNeueLTW02-75Bold.woff") format("woff"),
+    url("fonts/HelveticaNeueLTW02-75Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "HelveticaNeueW01-45Ligh";
+  src: url("fonts/HelveticaNeueLTW02-45Light.eot?#iefix");
+  src: url("fonts/HelveticaNeueLTW02-45Light.eot?#iefix") format("eot"),
+    url("fonts/HelveticaNeueLTW02-45Light.woff2") format("woff2"),
+    url("fonts/HelveticaNeueLTW02-45Light.woff") format("woff"),
+    url("fonts/HelveticaNeueLTW02-45Light.ttf") format("truetype");
+}
+@font-face {
+  font-family: "AvantGardeGothicITCW01B 731063";
+  src: url("fonts/ITCAvantGardeGothicW02-Bold.eot?#iefix");
+  src: url("fonts/ITCAvantGardeGothicW02-Bold.eot?#iefix") format("eot"),
+    url("fonts/ITCAvantGardeGothicW02-Bold.woff2") format("woff2"),
+    url("fonts/ITCAvantGardeGothicW02-Bold.woff") format("woff"),
+    url("fonts/ITCAvantGardeGothicW02-Bold.ttf") format("truetype");
+}
+@font-face {
+  font-family: "JBL";
+  src: url("fonts/jbl-font.eot");
+  src: url("fonts/jbl-font.eot?#iefix") format("embedded-opentype"), url("fonts/jbl-font.woff") format("woff"),
+    url("fonts/jbl-font.ttf") format("truetype"), url("fonts/jbl-font.svg#jbl-font") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "JBL";
+  src: url("fonts/vk.eot");
+  src: url("fonts/vk.eot?#iefix") format("embedded-opentype"), url("fonts/vk.woff") format("woff"),
+    url("fonts/vk.ttf") format("truetype"), url("fonts/vk.svg#jbl-font") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: "snapchat-ghost";
+  src: url("fonts/snapchat-ghost.eot");
+  src: url("fonts/snapchat-ghost.eot?#iefix") format("embedded-opentype"),
+    url("fonts/snapchat-ghost.woff") format("woff"), url("fonts/jbl-font.ttf") format("truetype"),
+    url("fonts/snapchat-ghost.svg#snapchat-ghost") format("svg");
+  font-weight: normal;
+  font-style: normal;
+}
