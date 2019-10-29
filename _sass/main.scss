@@ -16,6 +16,8 @@ $pink: #ff8080;
 $pink-invert: #fff;
 // Update the sans-serif font family
 $family-sans-serif: "Helvetica", "Arial", sans-serif;
+// mobile & tablet view
+$tablet: 1024px;
 
 // 3. Set the derived variables
 // Use the new pink as the primary color
@@ -262,3 +264,15 @@ $swatchtime: 0.4s;
 // .icon-btn .icon-circle {
 //   color: #3b4c64;
 // }
+
+.hero.is-primary,
+.footer {
+  display: none;
+}
+
+// mobile changes
+@media only screen and (max-width: $tablet) {
+  .navbar-item { 
+    display: none;
+  }
+}
