@@ -18,22 +18,22 @@
     <!--Jeeliz changes-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="content-language" content="en-EN" />
-    
+
     <title>JEELIZ FACE FILTER : THREE.JS GLTF FULLSCREEN DEMO</title>
-    
+
     <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
     <script src="dist/jeelizFaceFilter.js"></script>
 
     <!-- INCLUDE THREE.JS -->
     <script src="threejs/v106/three.js"></script>
     <script src="threejs/v97/GLTFLoader.js"></script>
-    
+
     <!-- INCLUDE JEELIZRESIZER -->
     <script src="helpers/JeelizResizer.js"></script>
 
     <!-- INCLUDE JEELIZ THREE.JS HELPER -->
     <script src="helpers/JeelizThreejsHelper.js"></script>
-    
+
     <!-- INCLUDE DEMO SCRIPT -->
     <script src="demo_gltf.js"></script>
 
@@ -124,8 +124,11 @@
 
                     </div>
                     <div class="row">
-                        <img
-                            src="images/JBLLIVE650BTNC/JBL_LIVE650BTNC_Product-Image_Front_Black_077_x1-1605x1605px.jpg">
+                        <a rel="ar" href="models/HeadPhones_01.usdz"> <img
+                                src="images/JBLLIVE650BTNC/JBL_LIVE650BTNC_Product-Image_Front_Black_077_x1-1605x1605px.jpg"
+                                alt="AR View" />
+                        </a>
+
                     </div>
                 </div>
 
@@ -240,9 +243,10 @@
                         </div>
                         <!-- Jeeliz changes-->
                         <div class="buttons">
-                            <button class="button is-info is-light" onclick="document.getElementById('jeeFaceFilterCanvas').style.display = 'block'; main()"">Go AR!</button>
-                            <canvas width="600" height="600" id='jeeFaceFilterCanvas' style="display: none"></canvas>
-                          </div>
+                            <button class="button is-info is-light"
+                                onclick="document.getElementById('jeeFaceFilterCanvas').style.display = 'block'; main()"">Go AR!</button>
+                            <canvas width=" 600" height="600" id='jeeFaceFilterCanvas' style="display: none"></canvas>
+                        </div>
                         <!-- Jeeliz changes-->
                     </div>
                 </div>
