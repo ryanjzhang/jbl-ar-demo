@@ -7153,16 +7153,22 @@ header {
     width: 90%; }
 
 @media only screen and (max-width: 1024px) {
-  .navbar-content {
-    display: flex; }
-    .navbar-content .navbar-menu {
-      display: flex;
-      box-shadow: none;
-      padding: 0;
-      margin-top: 20px; }
-      .navbar-content .navbar-menu .navbar-start {
-        display: flex; }
-    .navbar-content .navbar-burger {
-      display: none; }
-    .navbar-content .navbar-end {
-      display: none; } }
+  .navbar-end {
+    align-content: flex-end; }
+  .navbar-brand {
+    padding: 7px 4% 0 4%;
+    align-content: center;
+    flex-direction: row; }
+    .navbar-brand .navbar-item {
+      order: 2;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%); }
+    .navbar-brand .navbar-burger {
+      margin-left: 0; }
+  .navbar.pencil {
+    display: none; }
+  .row.photo {
+    display: flex;
+    justify-content: center; } }

@@ -257,8 +257,8 @@ $swatchtime: 0.4s;
 }
 
 .close-ar-btn {
-  position: absolute; 
-  top: 150px; 
+  position: absolute;
+  top: 150px;
   right: 10px;
   border: none;
   color: gray;
@@ -285,37 +285,44 @@ $swatchtime: 0.4s;
 }
 
 .ar-model {
-    .model-viewer {
-      .container {
-        border: 1px solid red;
-        width: 90%;
-      }
-      width: 100%;
+  .model-viewer {
+    .container {
+      border: 1px solid red;
+      width: 90%;
     }
+    width: 100%;
+  }
 }
 
 // mobile changes
 @media only screen and (max-width: $tablet) {
-  .navbar-content {
-    display: flex;
-
-    .navbar-menu {
-      display: flex;
-      box-shadow: none;
-      padding: 0;
-      margin-top: 20px;
-
-      .navbar-start {
-          display: flex;
-      }
+  .navbar-end {
+    align-content: flex-end;
+  }
+  .navbar-brand {
+    padding: 7px 4% 0 4%;
+    align-content: center;
+    flex-direction: row;
+    .navbar-item {
+      order: 2;
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
     }
-
     .navbar-burger {
-      display: none;
+      margin-left: 0;
     }
+  }
 
-    .navbar-end { 
+  .navbar {
+    &.pencil {
       display: none;
     }
+  }
+
+  .row.photo{
+    display: flex;
+    justify-content: center;
   }
 }
