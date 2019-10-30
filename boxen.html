@@ -18,28 +18,32 @@
     <!--Jeeliz changes-->
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <meta http-equiv="content-language" content="en-EN" />
-    
+
     <title>JEELIZ FACE FILTER : THREE.JS GLTF FULLSCREEN DEMO</title>
-    
+
     <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
     <script src="dist/jeelizFaceFilter.js"></script>
 
     <!-- INCLUDE THREE.JS -->
     <script src="threejs/v106/three.js"></script>
     <script src="threejs/v97/GLTFLoader.js"></script>
-    
+
     <!-- INCLUDE JEELIZRESIZER -->
     <script src="helpers/JeelizResizer.js"></script>
 
     <!-- INCLUDE JEELIZ THREE.JS HELPER -->
     <script src="helpers/JeelizThreejsHelper.js"></script>
-    
+
     <!-- INCLUDE DEMO SCRIPT -->
     <script src="demo_gltf.js"></script>
 
     <!-- INCLUDE FORK ME ON GITHUB BANNER -->
     <script src="widget.js"></script>
     <!-- Jeeliz end-->
+
+    <!-- Model viewer IMPORT-->
+    <script type="module" src="https://unpkg.com/@google/model-viewer@v0.6.0/dist/model-viewer.js"></script>
+
 </head>
 
 <body>
@@ -124,8 +128,7 @@
 
                     </div>
                     <div class="row">
-                        <img
-                            src="images/boxen.png">
+                        <img src="images/boxen.png">
                     </div>
                 </div>
 
@@ -137,7 +140,8 @@
                             <h1>JBL Bar 5.1</h1>
                         </div>
                         <div class="product-description">
-                            5.1-kanaals 4K Ultra HD soundbar met volledig draadloze surround-luidsprekers (True Wireless Surround)
+                            5.1-kanaals 4K Ultra HD soundbar met volledig draadloze surround-luidsprekers (True Wireless
+                            Surround)
                         </div>
                         <div class="review-stars">
                             <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
@@ -239,10 +243,13 @@
                                 <span>Levenslange ondersteuning</span></a>
                         </div>
                         <!-- Jeeliz changes-->
-                        <div class="buttons">
-                            <button class="button is-info is-light" onclick="document.getElementById('jeeFaceFilterCanvas').style.display = 'block'; main()"">Go AR!</button>
-                            <canvas width="600" height="600" id='jeeFaceFilterCanvas' style="display: none"></canvas>
-                          </div>
+                        <div class="ar-model">
+                            <model-viewer src="https://giamoe.github.io/resources/redrose.glb"
+                                ios-src="https://giamoe.github.io/resources/redrose.usdz" alt="A 3D model of a rose"
+                                shadow-intensity="1" camera-controls interaction-prompt="auto" auto-rotate ar
+                                magic-leap>
+                            </model-viewer>
+                        </div>
                         <!-- Jeeliz changes-->
                     </div>
                 </div>

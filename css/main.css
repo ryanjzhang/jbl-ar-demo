@@ -7134,6 +7134,23 @@ header {
 .footer {
   display: none; }
 
+.ar-model .model-viewer {
+  width: 100%; }
+  .ar-model .model-viewer .container {
+    border: 1px solid red;
+    width: 90%; }
+
 @media only screen and (max-width: 1024px) {
-  .navbar-item {
-    display: none; } }
+  .navbar-content {
+    display: flex; }
+    .navbar-content .navbar-menu {
+      display: flex;
+      box-shadow: none;
+      padding: 0;
+      margin-top: 20px; }
+      .navbar-content .navbar-menu .navbar-start {
+        display: flex; }
+    .navbar-content .navbar-burger {
+      display: none; }
+    .navbar-content .navbar-end {
+      display: none; } }
