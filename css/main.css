@@ -7130,6 +7130,16 @@ header {
   -o-transition: all 0.4s;
   transition: all 0.4s; }
 
+.close-ar-btn {
+  position: absolute;
+  top: 20;
+  right: 0;
+  border: none;
+  color: gray;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer; }
+
 .hero.is-primary,
 .footer {
   display: none; }

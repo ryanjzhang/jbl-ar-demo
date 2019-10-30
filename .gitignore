@@ -59,3 +59,36 @@ typings/
 
 # next.js build output
 .next
+package-lock.json
+.vscode/settings.json
+lib/demo_gltf.js
+lib/GLTFLoader.js
+lib/widget.js
+lib/dist/jeelizFaceFilter.js
+lib/dist/jeelizFaceFilterES6.js
+lib/helpers/addDragEventListener.js
+lib/helpers/Canvas2DDisplay.js
+lib/helpers/HeadControls.js
+lib/helpers/JeelizFaceCut.js
+lib/helpers/JeelizResizer.js
+lib/helpers/JeelizThreejsHelper.js
+lib/threejs/ShaderParticleEngine/SPE.min.js
+lib/threejs/customMaterials/FlexMaterial/ThreeFlexMaterial.js
+lib/threejs/customMaterials/GlowMaterial/threex.atmospherematerial.js
+lib/threejs/customMaterials/GlowMaterial/threex.atmospherematerialdatgui.js
+lib/threejs/customMaterials/GlowMaterial/threex.dilategeometry.js
+lib/threejs/customMaterials/GlowMaterial/threex.geometricglow.js
+lib/threejs/matrix/THREEMatrix.js
+lib/threejs/v106/three.js
+lib/threejs/v106/three.min.js
+lib/threejs/v90/GLTFLoader.js
+lib/threejs/v90/three.js
+lib/threejs/v90/three.min.js
+lib/threejs/v90/threeMantis202.js
+lib/threejs/v91/threeModified.js
+lib/threejs/v93/three.js
+lib/threejs/v93/three.min.js
+lib/threejs/v97/GLTFLoader.js
+lib/threejs/v97/three.js
+lib/threejs/v97/three.min.js
+package-lock.json

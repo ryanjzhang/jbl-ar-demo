@@ -244,58 +244,62 @@
                         <!-- Jeeliz changes-->
                         <div class="buttons">
                             <button class="button is-info is-light"
-                                onclick="document.getElementById('jeeFaceFilterCanvas').style.display = 'block'; main()"">Go AR!</button>
-                            <canvas width=" 600" height="600" id='jeeFaceFilterCanvas' style="display: none"></canvas>
+                                onclick="document.getElementById('ar-container').style.display = 'block'; main()">Go AR!</button>
+                            <div id="ar-container" style="display: none">
+                                <canvas width=" 600" height="600" id='jeeFaceFilterCanvas'
+                                    style="display: block;"></canvas>
+                                <button class="close-ar-btn" onclick="document.getElementById('ar-container').style.display = 'none'; stop()"></button>X</button>
                         </div>
-                        <!-- Jeeliz changes-->
+                    </div>
+                    <!-- Jeeliz changes-->
+                </div>
+            </div>
+        </div>
+    </div>
+    <section class="hero is-medium is-primary">
+        <div class="hero-body">
+            <div class="container">
+                <div class="columns">
+                    <div class="column is-8-desktop is-offset-2-desktop">
+                        <h1 class="title is-2 is-spaced">
+                            Hello Bulma!
+                        </h1>
+                        <h2 class="subtitle is-4">
+                            Congratulations! You're running the <strong>Bulma start</strong> project.
+                            <br>
+                            It includes everything you need to <strong>build your own website</strong> with
+                            Bulma.
+                        </h2>
                     </div>
                 </div>
             </div>
         </div>
-        <section class="hero is-medium is-primary">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="columns">
-                        <div class="column is-8-desktop is-offset-2-desktop">
-                            <h1 class="title is-2 is-spaced">
-                                Hello Bulma!
-                            </h1>
-                            <h2 class="subtitle is-4">
-                                Congratulations! You're running the <strong>Bulma start</strong> project.
-                                <br>
-                                It includes everything you need to <strong>build your own website</strong> with
-                                Bulma.
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
+    </section>
 
-        <footer class="footer has-text-centered">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-8-desktop is-offset-2-desktop">
-                        <p>
-                            <strong class="has-text-weight-semibold">
-                                <a href="https://www.npmjs.com/package/bulma-start">bulma-start@0.0.3</a>
-                            </strong>
-                        </p>
-                        <p>
-                            <small>
-                                Source code licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
-                            </small>
-                        </p>
-                        <p style="margin-top: 1rem;">
-                            <a href="http://bulma.io">
-                                <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
-                            </a>
-                        </p>
-                    </div>
+    <footer class="footer has-text-centered">
+        <div class="container">
+            <div class="columns">
+                <div class="column is-8-desktop is-offset-2-desktop">
+                    <p>
+                        <strong class="has-text-weight-semibold">
+                            <a href="https://www.npmjs.com/package/bulma-start">bulma-start@0.0.3</a>
+                        </strong>
+                    </p>
+                    <p>
+                        <small>
+                            Source code licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+                        </small>
+                    </p>
+                    <p style="margin-top: 1rem;">
+                        <a href="http://bulma.io">
+                            <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
+                        </a>
+                    </p>
                 </div>
             </div>
-        </footer>
-        <script type="text/javascript" src="lib/main.js"></script>
+        </div>
+    </footer>
+    <script type="text/javascript" src="lib/main.js"></script>
 
 </body>
 
