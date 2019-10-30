@@ -6,7 +6,7 @@ const SETTINGS = {
   // 'Charmander/glTF/model.gltf',
   // 'EnglishHat/glTF/tophat.gltf',
 
-  gltfModelURL:'HeadphoneEars/glTF/headphone_with_ears.glb',
+  gltfModelURL: 'HeadphoneEars/glTF/headphone_with_ears.glb',
   faceMeshGltfModelURL: 'HeadTest/glTF/head.glb',
   cubeMapURL: 'Bridge2/',
   offsetYZ: [0.3, 0], //offset of the model in 3D along vertical and depth axis
@@ -35,7 +35,7 @@ function init_threeScene(spec) {
     gltf.scene.traverse(function (child) {
       if (child.isMesh) {
         child.material.envMap = envMap;
-        child.material.color.set( 0xff0000 );
+        child.material.color.set(0xff0000);
         child.material.colorWrite = false;
       }
       console.log(child);
@@ -50,11 +50,11 @@ function init_threeScene(spec) {
     // scale the model according to its width:
     var sizeX = bbox.getSize(new THREE.Vector3()).x;
     gltf.scene.scale.multiplyScalar(SETTINGS.scale / sizeX * 0.65);
-        //gltf.scene.position.add(new THREE.Vector3(0, SETTINGS.offsetYZ[0], SETTINGS.offsetYZ[1]));
-    gltf.scene.position.add(new THREE.Vector3(0, 0,-1));
+    //gltf.scene.position.add(new THREE.Vector3(0, SETTINGS.offsetYZ[0], SETTINGS.offsetYZ[1]));
+    gltf.scene.position.add(new THREE.Vector3(0, 0, -1));
     bbox = new THREE.Box3().setFromObject(gltf.scene);
 
-    
+
 
     // center the model:
     const centerBBox = bbox.getCenter(new THREE.Vector3());
@@ -106,7 +106,7 @@ function init_threeScene(spec) {
     threeStuffs.faceObject.add(gltf.scene);
   }); //end gltfLoader.load callback
 
-  
+
 
   //CREATE THE CAMERA
   THREECAMERA = THREE.JeelizHelper.create_camera();
@@ -125,6 +125,7 @@ function main() {
 }
 
 function start() {
+  if(typeof JEEFACEFILTERAPI.toggle_pause(false, true) == 'undefined'){
   JEEFACEFILTERAPI.init({
     videoSettings: { //increase the default video resolution since we are in full screen
       'idealWidth': 1280,  //ideal video width in pixels
@@ -151,4 +152,9 @@ function start() {
     }
   }); //end JEEFACEFILTERAPI.init call
 } //end start()
+}
+//stop AR
+function stop() {
+  JEEFACEFILTERAPI.toggle_pause(true, true)
+}
 

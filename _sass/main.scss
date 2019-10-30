@@ -255,6 +255,17 @@ $swatchtime: 0.4s;
   -o-transition: all $swatchtime;
   transition: all $swatchtime;
 }
+
+.close-ar-btn {
+  position: absolute; 
+  top: 20; 
+  right: 0;
+  border: none;
+  color: gray;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+}
 // .icon-btn .icon-circle {
 //   color: #000000;
 // }
