@@ -38,7 +38,7 @@ header {
 }
 
 .navbar {
-  height: 80px;
+  // height: 80px;
   padding: 0;
 
   .navbar-item {
@@ -54,20 +54,19 @@ header {
       height: 2rem;
     }
   }
-
-  .navbar-brand .navbar-item {
-    img {
-      width: 4rem;
-      height: 4rem;
-      max-height: none;
-    }
-  }
 }
 
+.navbar-logo {
+  width: 4rem;
+  height: 4rem;
+  max-height: none;
+  margin: 0.5rem 1rem 0 0;
+}
 .navbar-content {
   margin: 0 auto;
   max-width: 1400px;
   min-width: 320px;
+  margin: 0 1rem 0 1rem;
 }
 
 #main {
@@ -293,36 +292,52 @@ $swatchtime: 0.4s;
     width: 100%;
   }
 }
-
+@media only screen and (min-width: $tablet) {
+  #navbarBasicExample {
+    display: none;
+  }
+}
 // mobile changes
 @media only screen and (max-width: $tablet) {
-  .navbar-end {
-    align-content: flex-end;
-  }
-  .navbar-brand {
-    padding: 7px 4% 0 4%;
-    align-content: center;
-    flex-direction: row;
-    .navbar-item {
-      order: 2;
-      position: absolute;
-      left: 50%;
-      top: 50%;
-      transform: translate(-50%, -50%);
-    }
-    .navbar-burger {
-      margin-left: 0;
-    }
+  .navbar.pencil {
+    display: none;
   }
 
-  .navbar {
-    &.pencil {
-      display: none;
-    }
-  }
-
-  .row.photo{
+  .navbar-content {
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
+    .navbar-brand {
+      align-items: center;
+      .navbar-item {
+        order: 2;
+      }
+      .navbar-burger {
+        margin-left: 0;
+      }
+    }
+
+    .navbar-logo {
+      margin-left: 1rem;
+    }
+
+    .navbar-end {
+      display: flex;
+      align-items: center;
+      :nth-child(2) {
+        display: none;
+      }
+    }
+  }
+  .navbar-menu .navbar-start .navbar-item {
+    color: black;
+  }
+  #main {
+    .row.breadcrumbs {
+      padding-bottom: 0.75rem;
+    }
+    .row.photo {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
