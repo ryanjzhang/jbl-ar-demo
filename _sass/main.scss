@@ -254,11 +254,16 @@ $swatchtime: 0.4s;
   -o-transition: all $swatchtime;
   transition: all $swatchtime;
 }
-
+#ar-container{
+  //position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
 .close-ar-btn {
   position: absolute;
-  top: 150px;
-  right: 10px;
+  top: 0;
+  right: 0;
   border: none;
   color: gray;
   padding: 12px 16px;
@@ -266,6 +271,51 @@ $swatchtime: 0.4s;
   cursor: pointer;
   z-index: 30;
   height: 45px;
+}
+
+.screencapture-btn {
+  position: absolute;
+  bottom: 0;
+  border: none;
+  color: gray;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  z-index: 30;
+  height: 45px;
+}
+
+.image-buttons{
+  display: flex;
+  flex-direction: row;
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+}
+
+#share-container{
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 30;
+}
+.cancel{
+  background-color: gray;
+}
+.image-btn{
+  border: none;
+  color: gray;
+  padding: 12px 16px;
+  font-size: 16px;
+  cursor: pointer;
+  height: 45px;
+  flex-grow: 1;
+  width: 50%;
+}
+
+#screencapture-img{
+  width: 100%;
+  height: 100%;
 }
 // .icon-btn .icon-circle {
 //   color: #000000;

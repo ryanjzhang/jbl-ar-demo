@@ -114,6 +114,7 @@ function init_threeScene(spec) {
 
 //entry point, launched by body.onload():
 function main() {
+  document.getElementById('ar-container').style.display = 'block'; 
   JeelizResizer.size_canvas({
     canvasId: 'jeeFaceFilterCanvas',
     isFullScreen: true,
@@ -151,10 +152,45 @@ function start() {
       THREE.JeelizHelper.render(detectState, THREECAMERA);
     }
   }); //end JEEFACEFILTERAPI.init call
-} //end start()
+  //scroll to top of screen
+
 }
+window.scrollTo(0, 0);
+//end start()
+}
+function screenCapture() {
+  var url = jeeFaceFilterCanvas.toDataURL('image/png');
+  document.getElementById('screencapture-img').src = url;
+  stop()
+  document.getElementById('share-container').style.display = 'block'; 
+
+}
+
+function shareImage() {
+  var filesArray = []; 
+  filesArray.push(document.getElementById('screencapture-img').src);
+  var file = document.getElementById('screencapture-img').src;
+  if (navigator.canShare ) {
+    navigator.share({
+      title: 'Vacation Pictures',
+      text: 'Barb\nHere are the pictures from our vacation.\n\nJoe',
+    })
+    .then(() => console.log('Share was successful.'))
+    .catch((error) => console.log('Sharing failed', error));
+  } else {
+    console.log('Your system doesn\'t support sharing files.');
+  }
+}
+
+function cancelImage(){
+  document.getElementById('share-container').style.display = 'none';
+  main() 
+
+}
+
 //stop AR
 function stop() {
+  document.getElementById('ar-container').style.display = 'none'; 
   JEEFACEFILTERAPI.toggle_pause(true, true)
 }
 

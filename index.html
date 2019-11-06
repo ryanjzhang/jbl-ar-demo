@@ -40,6 +40,7 @@
     <!-- INCLUDE FORK ME ON GITHUB BANNER -->
     <script src="widget.js"></script>
     <!-- Jeeliz end-->
+
 </head>
 
 <body>
@@ -250,16 +251,28 @@
                         </div>
                         <!-- Jeeliz changes-->
                         <div class="buttons">
-                            <button class="button is-info is-light"
-                                onclick="document.getElementById('ar-container').style.display = 'block'; main()">Go
-                                AR</button>
+                            <button class="button is-info is-light" onclick="main()">Go AR</button>
                             <div id="ar-container" style="display: none">
+
                                 <canvas width=" 600" height="600" id='jeeFaceFilterCanvas'
                                     style="display: block;"></canvas>
-                                <button class="close-ar-btn button is-info is-light"
-                                    onclick="document.getElementById('ar-container').style.display = 'none'; stop()">Close
+                                <button class="close-ar-btn button is-info is-light" onclick="stop()">Close
                                     AR</button>
+                                <button class="screencapture-btn button is-info is-light" onclick="screenCapture()">Take
+                                    picture!</button>
+
                             </div>
+
+                            <div id="share-container" style="display: none">
+                                <img id="screencapture-img">
+                                <div class="image-buttons">
+                                    <button class="image-btn button is-info is-light cancel"
+                                        onclick="cancelImage()">Cancel</button>
+                                    <button class="image-btn button is-info is-light"
+                                        onclick="shareImage()">Share</button>
+                                </div>
+                            </div>
+
                         </div>
                         <!-- Jeeliz changes-->
                     </div>
