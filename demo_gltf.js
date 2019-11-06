@@ -166,12 +166,30 @@ function screenCapture() {
 
 }
 
+function dataURLtoFile(dataurl, filename) {
+ 
+  var arr = dataurl.split(','),
+      mime = arr[0].match(/:(.*?);/)[1],
+      bstr = atob(arr[1]), 
+      n = bstr.length, 
+      u8arr = new Uint8Array(n);
+      
+  while(n--){
+      u8arr[n] = bstr.charCodeAt(n);
+  }
+  
+  return new File([u8arr], filename, {type:mime});
+}
+
 function shareImage() {
+  var file = dataURLtoFile(document.getElementById('screencapture-img').src,'image.png');
+console.log(file);
   var filesArray = []; 
-  filesArray.push(document.getElementById('screencapture-img').src);
-  var file = document.getElementById('screencapture-img').src;
-  if (navigator.canShare ) {
+  filesArray.push(file);
+  //var file = document.getElementById('screencapture-img').src;
+  if (navigator.canShare && navigator.canShare({ files: filesArray } )) {
     navigator.share({
+      files: filesArray,
       title: 'Vacation Pictures',
       text: 'Barb\nHere are the pictures from our vacation.\n\nJoe',
     })
