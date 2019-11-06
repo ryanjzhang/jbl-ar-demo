@@ -70,28 +70,33 @@
         </nav>
         <nav class="navbar navbar-content" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="">
-                    <img src="images/jbllogo.svg">
+                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
+                    data-target="navbarBasicExample">
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
+                    <span aria-hidden="true"></span>
                 </a>
-                <div class="navbar-burger burger" data-target="navbarBasicExample">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </div>
             </div>
-            <div id="navbarBasicExample" class="navbar-menu">
+            <a class="navbar-logo">
+                <img src="images/jbllogo.svg">
+            </a>
+            <div class="navbar-menu">
+
                 <div class="navbar-start">
-                    <a class="navbar-item" href="index.html">
+                    <a href="index.html" class="navbar-item">
                         <b>Hoofdtelefoon</b>
                     </a>
-                    <a class="navbar-item" href="boxen.html">
+
+                    <a href="boxen.html" class="navbar-item">
                         <b>Luidsprekers</b>
                     </a>
+
                     <a class="navbar-item">
                         <b>Helicopter Helm</b>
                     </a>
                 </div>
             </div>
+
             <div class="navbar-end">
                 <div class="navbar-item">
                     <img src="images/search-icon.svg">
@@ -105,6 +110,22 @@
             </div>
 
         </nav>
+        <div id="navbarBasicExample" class="navbar-menu">
+
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    <b>Hoofdtelefoon</b>
+                </a>
+
+                <a href="boxen.html" class="navbar-item">
+                    <b>Luidsprekers</b>
+                </a>
+
+                <a href="helm.html" class="navbar-item">
+                    <b>Helicopter Helm</b>
+                </a>
+            </div>
+        </div>
     </header>
     <div id="main">
         <div class="columns">
@@ -122,7 +143,6 @@
                         </a>
                     </div>
                 </div>
-
             </div>
             <div class="column product-details">
                 <div class="rows">
@@ -131,7 +151,8 @@
                             <h1>Helicopter Helm</h1>
                         </div>
                         <div class="product-description">
-                            A flight helmet, sometimes referred to as a "bone dome" or "foam dome", is a special type of
+                            A flight helmet, sometimes referred to as a "bone dome" or "foam dome", is a special
+                            type of
                             helmet primarily worn by military aircrew.
                         </div>
                         <div class="review-stars">
