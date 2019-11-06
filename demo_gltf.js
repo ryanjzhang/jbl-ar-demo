@@ -5,8 +5,8 @@ const SETTINGS = {
   // 'DamagedHelmet/glTF/DamagedHelmet.gltf',
   // 'Charmander/glTF/model.gltf',
   // 'EnglishHat/glTF/tophat.gltf',
-
-  gltfModelURL: 'HeadphoneEars/glTF/headphone_with_ears.glb',
+  gltfModelURL:'headphones/scene.gltf',
+  //gltfModelURL: 'HeadphoneEars/glTF/headphone_with_ears.glb',
   faceMeshGltfModelURL: 'HeadTest/glTF/head.glb',
   cubeMapURL: 'Bridge2/',
   offsetYZ: [0.3, 0], //offset of the model in 3D along vertical and depth axis
@@ -186,7 +186,6 @@ function shareImage() {
 console.log(file);
   var filesArray = []; 
   filesArray.push(file);
-  //var file = document.getElementById('screencapture-img').src;
   if (navigator.canShare && navigator.canShare({ files: filesArray } )) {
     navigator.share({
       files: filesArray,
