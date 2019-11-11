@@ -89,16 +89,16 @@ function init_threeScene(spec) {
     console.log(bbox.getSize());
     // scale the model according to its width:
     var sizeX = bbox.getSize(new THREE.Vector3()).x;
-    gltf.scene.scale.multiplyScalar(SETTINGS.scale / sizeX / 2.8);
+    gltf.scene.scale.multiplyScalar(SETTINGS.scale / sizeX / 1.5);
     bbox = new THREE.Box3().setFromObject(gltf.scene);
     // center the model:
     const centerBBox = bbox.getCenter(new THREE.Vector3());
     gltf.scene.position.add(centerBBox.multiplyScalar(-1));
-    //gltf.scene.position.add(new THREE.Vector3(0, SETTINGS.offsetYZ[0], SETTINGS.offsetYZ[1]));
-    gltf.scene.position.add(new THREE.Vector3(0, 1.2, -0.5));
+    gltf.scene.position.add(new THREE.Vector3(0, 0.8, SETTINGS.offsetYZ[1]));
+    //gltf.scene.position.add(new THREE.Vector3(0, 1.2, -0.5));
 
     //gltf.scene.rotateX(160);
-    gltf.scene.rotateY(-1.57);
+    //gltf.scene.rotateY(-1.57);
     // CREATE LIGHT
     const ambientLight = new THREE.AmbientLight(0XFFFFFF, 1);
     threeStuffs.scene.add(ambientLight);
