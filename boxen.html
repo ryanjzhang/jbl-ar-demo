@@ -42,7 +42,11 @@
     <!-- Jeeliz end-->
 
     <!-- Model viewer IMPORT-->
-    <script type="module" src="https://unpkg.com/@google/model-viewer@v0.6.0/dist/model-viewer.js"></script>
+    <!-- <script type="module" src="https://unpkg.com/@google/model-viewer@0.7.2/dist/model-viewer.js">
+    </script>
+
+    <script nomodule src="https://unpkg.com/@google/model-viewer@0.7.2/dist/model-viewer-legacy.js">
+    </script> -->
 
 </head>
 
@@ -70,10 +74,6 @@
         </nav>
         <nav class="navbar navbar-content" role="navigation" aria-label="main navigation">
             <div class="navbar-brand">
-                <a class="navbar-item" href="">
-                    <img src="images/jbllogo.svg">
-                </a>
-
                 <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
                     data-target="navbarBasicExample">
                     <span aria-hidden="true"></span>
@@ -81,12 +81,13 @@
                     <span aria-hidden="true"></span>
                 </a>
             </div>
+            <a class="navbar-logo">
+                <img src="images/jbllogo.svg">
+            </a>
+            <div class="navbar-menu">
 
-            <div id="navbarBasicExample" class="navbar-menu">
-
-                <div class="navbar-start">
-                    
-                    <a href="index.html" class="navbar-item">
+                <div href="index.html" class="navbar-start">
+                    <a class="navbar-item">
                         <b>Hoofdtelefoon</b>
                     </a>
 
@@ -113,6 +114,22 @@
             </div>
 
         </nav>
+        <div id="navbarBasicExample" class="navbar-menu">
+
+            <div class="navbar-start">
+                <a class="navbar-item">
+                    <b>Hoofdtelefoon</b>
+                </a>
+
+                <a href="boxen.html" class="navbar-item">
+                    <b>Luidsprekers</b>
+                </a>
+
+                <a href="helm.html" class="navbar-item">
+                    <b>Helicopter Helm</b>
+                </a>
+            </div>
+        </div>
     </header>
     <div id="main">
         <div class="columns">
@@ -124,11 +141,10 @@
                         </div>
 
                     </div>
-                    <div class="row">
-                        <a rel="ar" href="models/JBL_Bar5.1_Subwoofer.usdz"> <img
-                            src="images/boxen.png"
-                            alt="AR View" />
-                    </a>
+                    <div class="row photo">
+                        <a rel="ar" href="models/JBL_Bar5.1_Subwoofer.usdz"> <img src="images/boxen.png"
+                                alt="AR View" />
+                        </a>
                     </div>
                 </div>
 
@@ -243,13 +259,12 @@
                                 <span>Levenslange ondersteuning</span></a>
                         </div>
                         <!-- Jeeliz changes-->
-                        <div class="ar-model">
+                        <!-- <div class="ar-model">
                             <model-viewer src="https://giamoe.github.io/resources/redrose.glb"
-                                ios-src="https://giamoe.github.io/resources/redrose.usdz" alt="A 3D model of a rose"
-                                shadow-intensity="1" camera-controls interaction-prompt="auto" auto-rotate ar
-                                magic-leap>
+                                alt="A 3D model of a rose" shadow-intensity="1" camera-controls
+                                interaction-prompt="auto" auto-rotate ar magic-leap>
                             </model-viewer>
-                        </div>
+                        </div> -->
                         <!-- Jeeliz changes-->
                     </div>
                 </div>
