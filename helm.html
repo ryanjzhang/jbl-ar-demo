@@ -46,7 +46,7 @@
 
 </head>
 
-<body>
+<body onload="showARElement()">
     <header>
         <nav class="navbar pencil">
             <div class="navbar-content">
@@ -137,10 +137,13 @@
                         </div>
 
                     </div>
-                    <div class="row photo">
+                    <div id="ios" style="display:none" class="row photo ">
                         <a rel="ar" href="models/Helicopter-pilot.reality"> <img
                                 src="images/57F88604-9CEC-477B-AFE5-875F9476E052-700x700.jpeg" alt="AR View" />
                         </a>
+                    </div>
+                    <div id="android" style="display:none" class="row photo">
+                        <img src="images/57F88604-9CEC-477B-AFE5-875F9476E052-700x700.jpeg" alt="AR View" />
                     </div>
                 </div>
             </div>
@@ -241,18 +244,18 @@
                     </div> -->
                     <p class="in-stock-msg">Op voorraad. Verwachte levertijd is 1-2 werkdagen</p>
                     <div class="row">
-                        <div class="whybuy-reason is-"><a href="/why-buy-direct.html" target="_blank">
+                        <div class="whybuy-reason is-">
                                 <i class="icon-shipping-truk"></i>
-                                <span>Gratis verzending</span></a>
+                                <span>Gratis verzending</span>
                         </div>
-                        <div class="whybuy-reason col-xs-4"><a href="/why-buy-direct.html" target="_blank">
+                        <div class="whybuy-reason col-xs-4">
                                 <i class="icon-arrow-return"></i>
-                                <span>Gratis retourneren</span></a>
+                                <span>Gratis retourneren</span>
                         </div>
 
-                        <div class="whybuy-reason col-xs-4"><a href="/why-buy-direct.html" target="_blank">
+                        <div class="whybuy-reason col-xs-4">
                                 <i class="icon-support-headset"></i>
-                                <span>Levenslange ondersteuning</span></a>
+                                <span>Levenslange ondersteuning</span>
                         </div>
                     </div>
                 </div>
