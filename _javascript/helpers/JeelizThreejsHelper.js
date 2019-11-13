@@ -14,7 +14,7 @@ THREE.JeelizHelper = function () {
 
     tweakMoveYRotateY: 0.5, //tweak value: move detection window along Y axis when rotate the face
 
-    cameraMinVideoDimFov: 10, //Field of View for the smallest dimension of the video in degrees
+    cameraMinVideoDimFov: 46, //Field of View for the smallest dimension of the video in degrees
 
     isDebugPivotPoint: false //display a small cube for the pivot point
   };
@@ -387,6 +387,7 @@ THREE.JeelizHelper = function () {
       var fovFactor = vh > vw ? 1.0 / videoAspectRatio : 1.0;
       var fov = _settings.cameraMinVideoDimFov * fovFactor;
       var mobileview = 640;
+      var viewwidth = _threeRenderer.domElement.width;
 
       console.log('fovfactor: ', fovFactor);
 
@@ -401,9 +402,10 @@ THREE.JeelizHelper = function () {
       }
 
       // the canvas is off a mobile and requires a different scaling.
-      // if (cvw < mobileview) {
-      //   fov = 10;
-      // }
+      // mobile view has a width of 640px. 
+      if (viewwidth < mobileview) {
+        _settings.cameraMinVideoDimFov = 10;
+      }
 
       var cvws = vw * scale,
           cvhs = vh * scale;
@@ -411,12 +413,10 @@ THREE.JeelizHelper = function () {
       var offsetY = (cvhs - cvh) / 2.0;
       _scaleW = cvw / cvws;
 
-      console.log('canvas Aspect: ', canvasAspectRatio, 'fov: ', fov);
-
       // apply parameters:
       threeCamera.aspect = canvasAspectRatio;
       threeCamera.fov = fov;
-      console.log('INFO in JeelizThreejsHelper.update_camera() : camera vertical estimated FoV is', fov);
+      console.log('INFO in JeelizThreejsHelper Fov = ', _settings.cameraMinVideoDimFov + ' View width ' + viewwidth);
       threeCamera.setViewOffset(cvws, cvhs, offsetX, offsetY, cvw, cvh);
       threeCamera.updateProjectionMatrix();
 
