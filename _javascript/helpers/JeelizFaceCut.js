@@ -12,22 +12,24 @@ It does not handle the 3D aspect (no matrix stories)
 
 */
 
-var JeelizFaceCut=(function(){
+var JeelizFaceCut = function () {
     //settings
-    var FACECUTSETTINGS={
-        scale: [1.1, 1.7],   //scale of the face cut area. Relative to initial square detection area
-        offset: [0.01,0.10], //relative. 1-> 100% scale mask width of the image (or height)
-        smoothEdge: 0.15,    //crop smooth edge
-        headForheadY: 0.7,   //forhead start when Y>this value. Max: 1
-        headJawY: 0.5,       //lower jaw start when Y<this value. Max: 1
+    var FACECUTSETTINGS = {
+        scale: [1.1, 1.7], //scale of the face cut area. Relative to initial square detection area
+        offset: [0.01, 0.10], //relative. 1-> 100% scale mask width of the image (or height)
+        smoothEdge: 0.15, //crop smooth edge
+        headForheadY: 0.7, //forhead start when Y>this value. Max: 1
+        headJawY: 0.5, //lower jaw start when Y<this value. Max: 1
         ryDriftDx: -0.1,
-        rzDriftDx: 0.1       //drift along X axis if rotation around Z (depth). tweak
+        rzDriftDx: 0.1 //drift along X axis if rotation around Z (depth). tweak
     };
-    
-    //private variables
-    var GL, __canvas, __glVideoTexture, __shps={};
-    var __fboDrawTarget, __fbo;
 
+    //private variables
+    var GL,
+        __canvas,
+        __glVideoTexture,
+        __shps = {};
+    var __fboDrawTarget, __fbo;
 
     //private functions
 
@@ -38,7 +40,7 @@ var JeelizFaceCut=(function(){
         GL.shaderSource(shader, source);
         GL.compileShader(shader);
         if (!GL.getShaderParameter(shader, GL.COMPILE_STATUS)) {
-            alert("ERROR IN "+typeString+ " SHADER : " + GL.getShaderInfoLog(shader));
+            alert("ERROR IN " + typeString + " SHADER : " + GL.getShaderInfoLog(shader));
             console.log('Buggy shader source : \n', source);
             return false;
         }
@@ -48,35 +50,35 @@ var JeelizFaceCut=(function(){
     //build the shader program :
     function build_shaderProgram(shaderVertexSource, shaderFragmentSource, id) {
         //compile both shader separately
-        var shaderVertex=compile_shader(shaderVertexSource, GL.VERTEX_SHADER, "VERTEX "+id);
-        var shaderFragment=compile_shader(shaderFragmentSource, GL.FRAGMENT_SHADER, "FRAGMENT "+id);
+        var shaderVertex = compile_shader(shaderVertexSource, GL.VERTEX_SHADER, "VERTEX " + id);
+        var shaderFragment = compile_shader(shaderFragmentSource, GL.FRAGMENT_SHADER, "FRAGMENT " + id);
 
-        var shaderProgram=GL.createProgram();
+        var shaderProgram = GL.createProgram();
         GL.attachShader(shaderProgram, shaderVertex);
         GL.attachShader(shaderProgram, shaderFragment);
 
         //start the linking stage :
         GL.linkProgram(shaderProgram);
         var aPos = GL.getAttribLocation(shaderProgram, "position");
-          GL.enableVertexAttribArray(aPos);
+        GL.enableVertexAttribArray(aPos);
 
         return {
             program: shaderProgram,
-            uniforms:{}
+            uniforms: {}
         };
     } //end build_shaderProgram()
     //END VANILLA WEBGL HELPERS
 
     //builds shader programs :
-    function build__shps(){
-        var copyVertexShaderSource="attribute vec2 position;\n\
+    function build__shps() {
+        var copyVertexShaderSource = "attribute vec2 position;\n\
              varying vec2 vUV;\n\
              void main(void){\n\
                 gl_Position=vec4(position, 0., 1.);\n\
                 vUV=0.5+0.5*position;\n\
              }";
 
-        var copyFragmentShaderSource="precision lowp float;\n\
+        var copyFragmentShaderSource = "precision lowp float;\n\
              uniform sampler2D samplerImage;\n\
              varying vec2 vUV;\n\
              \n\
@@ -85,14 +87,14 @@ var JeelizFaceCut=(function(){
              }";
 
         //Copy shader program : simply copy a texture
-        __shps.copy=build_shaderProgram(copyVertexShaderSource, copyFragmentShaderSource, 'COPY');
-        __shps.copy.uniforms.samplerImage=GL.getUniformLocation(__shps.copy.program, 'samplerImage');
+        __shps.copy = build_shaderProgram(copyVertexShaderSource, copyFragmentShaderSource, 'COPY');
+        __shps.copy.uniforms.samplerImage = GL.getUniformLocation(__shps.copy.program, 'samplerImage');
         GL.useProgram(__shps.copy.program);
         GL.uniform1i(__shps.copy.uniforms.samplerImage, 0);
 
         //search shp : display a search square on the head
         //we play on the viewport position to positionnate it
-        var searchFragmentShaderSource="precision lowp float;\n\
+        var searchFragmentShaderSource = "precision lowp float;\n\
              uniform float detected;\n\
              varying vec2 vUV;\n\
              \n\
@@ -102,12 +104,11 @@ var JeelizFaceCut=(function(){
                  float alpha=pow(max(blendCenterFactor.x, blendCenterFactor.y), 3.);\n\
                  gl_FragColor=vec4(color, alpha*0.5);\n\
              }";
-        __shps.search=build_shaderProgram(copyVertexShaderSource, searchFragmentShaderSource, 'SEARCH');
-        __shps.search.uniforms.detected=GL.getUniformLocation(__shps.search.program, 'detected');
-
+        __shps.search = build_shaderProgram(copyVertexShaderSource, searchFragmentShaderSource, 'SEARCH');
+        __shps.search.uniforms.detected = GL.getUniformLocation(__shps.search.program, 'detected');
 
         //faceCut shp : cut the face and put the result into a texture with alpha
-        var copyRotateVertexShaderSource="attribute vec2 position;\n\
+        var copyRotateVertexShaderSource = "attribute vec2 position;\n\
          uniform float rz, aspectRatio;\n\
          varying vec2 vUV, vUVrot;\n\
          void main(void){\n\
@@ -117,14 +118,14 @@ var JeelizFaceCut=(function(){
             vUV=0.5+0.5*position;\n\
             vUVrot=0.5+0.5*posRz;\n\
          }";
-        var faceCutFragmentShaderSource="precision lowp float;\n\
+        var faceCutFragmentShaderSource = "precision lowp float;\n\
          uniform vec2 offset, scale;\n\
          uniform sampler2D samplerImage;\n\
          varying vec2 vUV, vUVrot;\n\
          \n\
-         const float UPPERHEADY="+FACECUTSETTINGS.headForheadY.toFixed(2)+";\n\
-         const float LOWERHEADY="+FACECUTSETTINGS.headJawY.toFixed(2)+";\n\
-         const float SMOOTHEDGE="+FACECUTSETTINGS.smoothEdge.toFixed(2)+";\n\
+         const float UPPERHEADY=" + FACECUTSETTINGS.headForheadY.toFixed(2) + ";\n\
+         const float LOWERHEADY=" + FACECUTSETTINGS.headJawY.toFixed(2) + ";\n\
+         const float SMOOTHEDGE=" + FACECUTSETTINGS.smoothEdge.toFixed(2) + ";\n\
          \n\
          \n\
          void main(void){\n\
@@ -154,19 +155,18 @@ var JeelizFaceCut=(function(){
             //color=vec3(1.,0.,0.); //FOR DEBUG : DISPLAY IN RED\n\
             gl_FragColor=vec4(color, 1.-alpha);\n\
              \n\
-         }"
-        __shps.faceCut=build_shaderProgram(copyRotateVertexShaderSource, faceCutFragmentShaderSource, 'FACECUT');
-        __shps.faceCut.uniforms.rz=GL.getUniformLocation(__shps.faceCut.program, 'rz');
-        __shps.faceCut.uniforms.offset=GL.getUniformLocation(__shps.faceCut.program, 'offset');
-        __shps.faceCut.uniforms.scale=GL.getUniformLocation(__shps.faceCut.program, 'scale');
-        __shps.faceCut.uniforms.aspectRatio=GL.getUniformLocation(__shps.faceCut.program, 'aspectRatio');
-        __shps.faceCut.uniforms.samplerImage=GL.getUniformLocation(__shps.faceCut.program, 'samplerImage');
+         }";
+        __shps.faceCut = build_shaderProgram(copyRotateVertexShaderSource, faceCutFragmentShaderSource, 'FACECUT');
+        __shps.faceCut.uniforms.rz = GL.getUniformLocation(__shps.faceCut.program, 'rz');
+        __shps.faceCut.uniforms.offset = GL.getUniformLocation(__shps.faceCut.program, 'offset');
+        __shps.faceCut.uniforms.scale = GL.getUniformLocation(__shps.faceCut.program, 'scale');
+        __shps.faceCut.uniforms.aspectRatio = GL.getUniformLocation(__shps.faceCut.program, 'aspectRatio');
+        __shps.faceCut.uniforms.samplerImage = GL.getUniformLocation(__shps.faceCut.program, 'samplerImage');
         GL.useProgram(__shps.faceCut.program);
         GL.uniform1i(__shps.faceCut.uniforms.samplerImage, 0);
-        
 
         //renderFace shp : make color correction
-        var renderFaceFragmentShaderSource="precision lowp float;\n\
+        var renderFaceFragmentShaderSource = "precision lowp float;\n\
          uniform sampler2D samplerImage, samplerHueSrc, samplerHueDst;\n\
          varying vec2 vUV, vUVrot;\n\
          const vec2 EPSILON2=vec2(0.001, 0.001);\n\
@@ -209,133 +209,136 @@ var JeelizFaceCut=(function(){
              colorRGB=hsv2rgb(colorHSVout);\n\
              gl_FragColor=vec4(colorRGB, colorImage.a);\n\
          }";
-        __shps.renderFace=build_shaderProgram(copyRotateVertexShaderSource, renderFaceFragmentShaderSource, 'RENDERFACE');
-        __shps.renderFace.uniforms.rz= GL.getUniformLocation(__shps.renderFace.program, 'rz');
-        __shps.renderFace.uniforms.aspectRatio= GL.getUniformLocation(__shps.renderFace.program, 'aspectRatio');
-        __shps.renderFace.uniforms.samplerImage= GL.getUniformLocation(__shps.renderFace.program, 'samplerImage');
-        __shps.renderFace.uniforms.samplerHueSrc=GL.getUniformLocation(__shps.renderFace.program, 'samplerHueSrc');
-        __shps.renderFace.uniforms.samplerHueDst=GL.getUniformLocation(__shps.renderFace.program, 'samplerHueDst');
+        __shps.renderFace = build_shaderProgram(copyRotateVertexShaderSource, renderFaceFragmentShaderSource, 'RENDERFACE');
+        __shps.renderFace.uniforms.rz = GL.getUniformLocation(__shps.renderFace.program, 'rz');
+        __shps.renderFace.uniforms.aspectRatio = GL.getUniformLocation(__shps.renderFace.program, 'aspectRatio');
+        __shps.renderFace.uniforms.samplerImage = GL.getUniformLocation(__shps.renderFace.program, 'samplerImage');
+        __shps.renderFace.uniforms.samplerHueSrc = GL.getUniformLocation(__shps.renderFace.program, 'samplerHueSrc');
+        __shps.renderFace.uniforms.samplerHueDst = GL.getUniformLocation(__shps.renderFace.program, 'samplerHueDst');
         GL.useProgram(__shps.renderFace.program);
         GL.uniform1i(__shps.renderFace.uniforms.samplerImage, 0);
         GL.uniform1i(__shps.renderFace.uniforms.samplerHueSrc, 2);
         GL.uniform1i(__shps.renderFace.uniforms.samplerHueDst, 1);
-       
     } //end build__shps()
 
-    function fill_viewport(){ //FILL VIEWPORT. A VBO with 1 big triangle is already bound to the context by Facefilter API
+    function fill_viewport() {
+        //FILL VIEWPORT. A VBO with 1 big triangle is already bound to the context by Facefilter API
         GL.drawElements(GL.TRIANGLES, 3, GL.UNSIGNED_SHORT, 0);
     }
 
-    function build__fbo(){ //we need to create a FBO to do render to texture for color corrections
-        __fbo=GL.createFramebuffer();
-        __fboDrawTarget=(GL.DRAW_FRAMEBUFFER)?GL.DRAW_FRAMEBUFFER:GL.FRAMEBUFFER; //depending on WebGL1 or WebGL2
+    function build__fbo() {
+        //we need to create a FBO to do render to texture for color corrections
+        __fbo = GL.createFramebuffer();
+        __fboDrawTarget = GL.DRAW_FRAMEBUFFER ? GL.DRAW_FRAMEBUFFER : GL.FRAMEBUFFER; //depending on WebGL1 or WebGL2
     }
 
-    function create_emptyTexture(w, h){
-        var tex=GL.createTexture();
+    function create_emptyTexture(w, h) {
+        var tex = GL.createTexture();
         GL.bindTexture(GL.TEXTURE_2D, tex);
         GL.texImage2D(GL.TEXTURE_2D, 0, GL.RGBA, w, h, 0, GL.RGBA, GL.UNSIGNED_BYTE, null);
-          GL.texParameteri( GL.TEXTURE_2D, GL.TEXTURE_WRAP_S, GL.CLAMP_TO_EDGE );
-          GL.texParameteri( GL.TEXTURE_2D, GL.TEXTURE_WRAP_T, GL.CLAMP_TO_EDGE );
+        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_WRAP_S, GL.CLAMP_TO_EDGE);
+        GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_WRAP_T, GL.CLAMP_TO_EDGE);
         return tex;
     };
 
-    function create_emptyLinearTexture(w, h){
-        var tex=create_emptyTexture(w,h);
+    function create_emptyLinearTexture(w, h) {
+        var tex = create_emptyTexture(w, h);
         GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.LINEAR);
         GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.LINEAR);
         return tex;
     };
 
     //create the artpainting and userCrop hue textures :
-    function create_emptyMipmapTexture(w,h){
-        var tex=create_emptyTexture(w,h);
+    function create_emptyMipmapTexture(w, h) {
+        var tex = create_emptyTexture(w, h);
         GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.LINEAR);
         GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MIN_FILTER, GL.LINEAR_MIPMAP_NEAREST);
         return tex;
     };
 
     //public static methods :
-    var superThat={
-        init: function(spec){
-            GL=spec.GL;
-            __canvas=spec.canvasElement;
-            __glVideoTexture=spec.videoTexture;
+    var superThat = {
+        init: function init(spec) {
+            GL = spec.GL;
+            __canvas = spec.canvasElement;
+            __glVideoTexture = spec.videoTexture;
 
             build__shps();
             build__fbo();
         },
 
-        draw_video: function(){ //draw the video texture as background
+        draw_video: function draw_video() {
+            //draw the video texture as background
             GL.bindFramebuffer(__fboDrawTarget, null);
             GL.useProgram(__shps.copy.program);
             GL.bindTexture(GL.TEXTURE_2D, __glVideoTexture);
-            GL.viewport(0,0,__canvas.width, __canvas.height);
+            GL.viewport(0, 0, __canvas.width, __canvas.height);
             fill_viewport();
         },
 
-        draw_search: function(detectStates){
+        draw_search: function draw_search(detectStates) {
             superThat.draw_video();
 
             GL.enable(GL.BLEND);
             GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
             GL.useProgram(__shps.search.program);
-            detectStates.forEach(function(detectState){
+            detectStates.forEach(function (detectState) {
                 GL.uniform1f(__shps.search.uniforms.detected, detectState.detected);
-                var xPx=((detectState.x+1)*0.5*__canvas.width),
-                    yPx=((detectState.y+1)*0.5*__canvas.height),
-                    wPx=Math.round(detectState.s*__canvas.width);
-                GL.viewport(Math.round(xPx-wPx/2), Math.round(yPx-wPx/2), wPx, wPx);
+                var xPx = (detectState.x + 1) * 0.5 * __canvas.width,
+                    yPx = (detectState.y + 1) * 0.5 * __canvas.height,
+                    wPx = Math.round(detectState.s * __canvas.width);
+                GL.viewport(Math.round(xPx - wPx / 2), Math.round(yPx - wPx / 2), wPx, wPx);
                 fill_viewport();
             });
         },
 
-        instance: function(specFaceCut){
+        instance: function instance(specFaceCut) {
             //Initialize a facecut object
 
             //default parameters if not specified 
-            specFaceCut.sizePx=specFaceCut.sizePx || 64; //should be POT - size of the cut face texture
-            specFaceCut.hueSizePx=specFaceCut.hueSizePx || 4; //should be POT - size of the texture used for color correction
+            specFaceCut.sizePx = specFaceCut.sizePx || 64; //should be POT - size of the cut face texture
+            specFaceCut.hueSizePx = specFaceCut.hueSizePx || 4; //should be POT - size of the texture used for color correction
 
             //create the face cut POT texture which will be used later to compute the hue Texture
-            var _glFaceCutTexture=create_emptyMipmapTexture(specFaceCut.sizePx,specFaceCut.sizePx);
+            var _glFaceCutTexture = create_emptyMipmapTexture(specFaceCut.sizePx, specFaceCut.sizePx);
 
             //create the hue Texture which will be used for color correction
-            var _glHueTexture=create_emptyLinearTexture(specFaceCut.hueSizePx, specFaceCut.hueSizePx);
-            
+            var _glHueTexture = create_emptyLinearTexture(specFaceCut.hueSizePx, specFaceCut.hueSizePx);
+
             //normalized detection parameters
-            var _faceOffset=[0,0], _faceScale=[0,0], _rz=0.0;
-            function compute_faceScaleOffset(detectState){
-                _rz=detectState.rz;
-                _faceOffset[0]=detectState.x*0.5+0.5+detectState.s*FACECUTSETTINGS.offset[0]*Math.sin(detectState.ry); //normalized x position
-                _faceOffset[1]=detectState.y*0.5+0.5+detectState.s*FACECUTSETTINGS.offset[1];
-                _faceScale[0]=detectState.s*FACECUTSETTINGS.scale[0];
-                _faceScale[1]=detectState.s*FACECUTSETTINGS.scale[1]*__canvas.width/__canvas.height;
+            var _faceOffset = [0, 0],
+                _faceScale = [0, 0],
+                _rz = 0.0;
+            function compute_faceScaleOffset(detectState) {
+                _rz = detectState.rz;
+                _faceOffset[0] = detectState.x * 0.5 + 0.5 + detectState.s * FACECUTSETTINGS.offset[0] * Math.sin(detectState.ry); //normalized x position
+                _faceOffset[1] = detectState.y * 0.5 + 0.5 + detectState.s * FACECUTSETTINGS.offset[1];
+                _faceScale[0] = detectState.s * FACECUTSETTINGS.scale[0];
+                _faceScale[1] = detectState.s * FACECUTSETTINGS.scale[1] * __canvas.width / __canvas.height;
 
                 //tweaks :
-                _faceOffset[0]+=_faceScale[0]*FACECUTSETTINGS.ryDriftDx*Math.sin(detectState.ry);
-                _faceOffset[0]+=_faceScale[0]*FACECUTSETTINGS.rzDriftDx*Math.sin(detectState.rz);
+                _faceOffset[0] += _faceScale[0] * FACECUTSETTINGS.ryDriftDx * Math.sin(detectState.ry);
+                _faceOffset[0] += _faceScale[0] * FACECUTSETTINGS.rzDriftDx * Math.sin(detectState.rz);
             }
 
-
             //public dynamic methods :
-            var that={
+            var that = {
                 //getters ;
-                get_faceScale: function(){
+                get_faceScale: function get_faceScale() {
                     return _faceScale;
                 },
-                get_faceOffset: function(){
+                get_faceOffset: function get_faceOffset() {
                     return _faceOffset;
                 },
-                get_rz: function(){
+                get_rz: function get_rz() {
                     return _rz;
                 },
 
-                bind_hueTexture: function(){
+                bind_hueTexture: function bind_hueTexture() {
                     GL.bindTexture(GL.TEXTURE_2D, _glHueTexture);
                 },
 
-                cut: function(detectState){
+                cut: function cut(detectState) {
                     GL.bindFramebuffer(__fboDrawTarget, __fbo); //for RTT
                     GL.disable(GL.BLEND);
 
@@ -345,9 +348,9 @@ var JeelizFaceCut=(function(){
                     //cut the face
                     GL.useProgram(__shps.faceCut.program);
                     GL.framebufferTexture2D(GL.FRAMEBUFFER, GL.COLOR_ATTACHMENT0, GL.TEXTURE_2D, _glFaceCutTexture, 0);
-                    GL.viewport(0,0,specFaceCut.sizePx,specFaceCut.sizePx);
+                    GL.viewport(0, 0, specFaceCut.sizePx, specFaceCut.sizePx);
                     GL.uniform1f(__shps.faceCut.uniforms.rz, -_rz);
-                    GL.uniform1f(__shps.faceCut.uniforms.aspectRatio, FACECUTSETTINGS.scale[0]/FACECUTSETTINGS.scale[1]);
+                    GL.uniform1f(__shps.faceCut.uniforms.aspectRatio, FACECUTSETTINGS.scale[0] / FACECUTSETTINGS.scale[1]);
                     GL.uniform2fv(__shps.faceCut.uniforms.offset, _faceOffset);
                     GL.uniform2fv(__shps.faceCut.uniforms.scale, _faceScale);
                     GL.bindTexture(GL.TEXTURE_2D, __glVideoTexture);
@@ -356,35 +359,35 @@ var JeelizFaceCut=(function(){
                     //compute the color correction texture :
                     GL.useProgram(__shps.copy.program);
                     GL.framebufferTexture2D(GL.FRAMEBUFFER, GL.COLOR_ATTACHMENT0, GL.TEXTURE_2D, _glHueTexture, 0);
-                    GL.viewport(0,0,specFaceCut.hueSizePx, specFaceCut.hueSizePx);
+                    GL.viewport(0, 0, specFaceCut.hueSizePx, specFaceCut.hueSizePx);
                     GL.bindTexture(GL.TEXTURE_2D, _glFaceCutTexture);
-                       GL.generateMipmap(GL.TEXTURE_2D);
-                    fill_viewport();                    
+                    GL.generateMipmap(GL.TEXTURE_2D);
+                    fill_viewport();
                 }, //end cut()
 
-                render: function(faceCutPos){ //render this faceCut on the same place than faceCutPos
+                render: function render(faceCutPos) {
+                    //render this faceCut on the same place than faceCutPos
                     //set good blending : 
                     GL.enable(GL.BLEND);
                     GL.blendFunc(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA);
-                    GL.blendEquationSeparate( GL.FUNC_ADD, GL.FUNC_ADD );
-                    GL.blendFuncSeparate( GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA, GL.ONE, GL.ONE_MINUS_SRC_ALPHA );
-                    
+                    GL.blendEquationSeparate(GL.FUNC_ADD, GL.FUNC_ADD);
+                    GL.blendFuncSeparate(GL.SRC_ALPHA, GL.ONE_MINUS_SRC_ALPHA, GL.ONE, GL.ONE_MINUS_SRC_ALPHA);
+
                     //compute normalized detection parameters :
-                    var faceScale=faceCutPos.get_faceScale();
-                    var faceOffset=faceCutPos.get_faceOffset();
-                    
+                    var faceScale = faceCutPos.get_faceScale();
+                    var faceOffset = faceCutPos.get_faceOffset();
+
                     //play on the viewport to render at a specific position
-                    var vpx=faceOffset[0]*__canvas.width; //in pixels
-                    var vpy=faceOffset[1]*__canvas.height;
-                    var vpw=faceScale[0]*__canvas.width;
-                    var vph=faceScale[1]*__canvas.height;
-                    GL.viewport(Math.round(vpx-vpw/2), Math.round(vpy-vph/2), Math.round(vpw), Math.round(vph));
-                    
+                    var vpx = faceOffset[0] * __canvas.width; //in pixels
+                    var vpy = faceOffset[1] * __canvas.height;
+                    var vpw = faceScale[0] * __canvas.width;
+                    var vph = faceScale[1] * __canvas.height;
+                    GL.viewport(Math.round(vpx - vpw / 2), Math.round(vpy - vph / 2), Math.round(vpw), Math.round(vph));
+
                     GL.useProgram(__shps.renderFace.program);
                     //GL.uniform1f(__shps.renderFace.uniforms.rz, 2.*_rz-faceCutPos.get_rz());
-                    GL.uniform1f(__shps.renderFace.uniforms.rz, _rz-faceCutPos.get_rz());
-                    GL.uniform1f(__shps.renderFace.uniforms.aspectRatio, FACECUTSETTINGS.scale[0]/FACECUTSETTINGS.scale[1]);
-
+                    GL.uniform1f(__shps.renderFace.uniforms.rz, _rz - faceCutPos.get_rz());
+                    GL.uniform1f(__shps.renderFace.uniforms.aspectRatio, FACECUTSETTINGS.scale[0] / FACECUTSETTINGS.scale[1]);
 
                     GL.activeTexture(GL.TEXTURE2); //hue source
                     GL.bindTexture(GL.TEXTURE_2D, _glHueTexture);
@@ -393,8 +396,8 @@ var JeelizFaceCut=(function(){
                     GL.activeTexture(GL.TEXTURE0); //faceCut image
                     GL.bindTexture(GL.TEXTURE_2D, _glFaceCutTexture);
 
-                       fill_viewport();
-                       GL.disable(GL.BLEND);
+                    fill_viewport();
+                    GL.disable(GL.BLEND);
                 }
 
             }; //end that;
@@ -402,4 +405,4 @@ var JeelizFaceCut=(function(){
         } //end instance()
     }; //end superThat
     return superThat;
-})();
+}();

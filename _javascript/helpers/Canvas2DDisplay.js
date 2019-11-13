@@ -12,12 +12,19 @@ Return an object width these properties :
  - resize: to call if the HTML canvas size has changed
 */
 
-JEEFACEFILTERAPI.Canvas2DDisplay=function(spec){
+JEEFACEFILTERAPI.Canvas2DDisplay = function (spec) {
 
     //some globalz :
-    var CV, CANVAS2D, CTX, GL, CANVASTEXTURE, CANVASTEXTURENEEDSUPDATE=false,SHADERCOPY, VIDEOTEXTURE;
-    var COORDINATES={
-        x:0, y:0,s:0
+    var CV,
+        CANVAS2D,
+        CTX,
+        GL,
+        CANVASTEXTURE,
+        CANVASTEXTURENEEDSUPDATE = false,
+        SHADERCOPY,
+        VIDEOTEXTURE;
+    var COORDINATES = {
+        x: 0, y: 0, s: 0
     };
 
     //BEGIN WEBGL HELPERS
@@ -27,7 +34,7 @@ JEEFACEFILTERAPI.Canvas2DDisplay=function(spec){
         GL.shaderSource(shader, source);
         GL.compileShader(shader);
         if (!GL.getShaderParameter(shader, GL.COMPILE_STATUS)) {
-            alert("ERROR IN "+typeString+ " SHADER : " + GL.getShaderInfoLog(shader));
+            alert("ERROR IN " + typeString + " SHADER : " + GL.getShaderInfoLog(shader));
         }
         return shader;
     };
@@ -35,10 +42,10 @@ JEEFACEFILTERAPI.Canvas2DDisplay=function(spec){
     //helper function to build the shader program :
     function build_shaderProgram(shaderVertexSource, shaderFragmentSource, id) {
         //compile both shader separately
-        var shaderVertex=compile_shader(shaderVertexSource, GL.VERTEX_SHADER, "VERTEX "+id);
-        var shaderFragment=compile_shader(shaderFragmentSource, GL.FRAGMENT_SHADER, "FRAGMENT "+id);
+        var shaderVertex = compile_shader(shaderVertexSource, GL.VERTEX_SHADER, "VERTEX " + id);
+        var shaderFragment = compile_shader(shaderFragmentSource, GL.FRAGMENT_SHADER, "FRAGMENT " + id);
 
-        var shaderProgram=GL.createProgram();
+        var shaderProgram = GL.createProgram();
         GL.attachShader(shaderProgram, shaderVertex);
         GL.attachShader(shaderProgram, shaderFragment);
 
@@ -50,18 +57,18 @@ JEEFACEFILTERAPI.Canvas2DDisplay=function(spec){
 
 
     //affect some globalz
-    GL=spec.GL;
-    CV=spec.canvasElement;
-    VIDEOTEXTURE=spec.videoTexture;
+    GL = spec.GL;
+    CV = spec.canvasElement;
+    VIDEOTEXTURE = spec.videoTexture;
 
     //create and size the 2D canvas and its drawing context
-    CANVAS2D=document.createElement('canvas');
-    CANVAS2D.width=CV.width;
-    CANVAS2D.height=CV.height;
-    CTX=CANVAS2D.getContext('2d');
-        
+    CANVAS2D = document.createElement('canvas');
+    CANVAS2D.width = CV.width;
+    CANVAS2D.height = CV.height;
+    CTX = CANVAS2D.getContext('2d');
+
     //create the WebGL texture with the canvas
-    CANVASTEXTURE=GL.createTexture();
+    CANVASTEXTURE = GL.createTexture();
     GL.bindTexture(GL.TEXTURE_2D, CANVASTEXTURE);
     GL.texImage2D(GL.TEXTURE_2D, 0, GL.RGBA, GL.RGBA, GL.UNSIGNED_BYTE, CANVAS2D);
     GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_MAG_FILTER, GL.LINEAR);
@@ -70,33 +77,34 @@ JEEFACEFILTERAPI.Canvas2DDisplay=function(spec){
     GL.texParameteri(GL.TEXTURE_2D, GL.TEXTURE_WRAP_T, GL.CLAMP_TO_EDGE);
 
     //build the copy shader program :
-    var copyVertexShaderSource="attribute vec2 position;\n\
+    var copyVertexShaderSource = "attribute vec2 position;\n\
          varying vec2 vUV;\n\
          void main(void){\n\
             gl_Position=vec4(position, 0., 1.);\n\
             vUV=vec2(0.5,0.5)+0.5*position;\n\
          }";
 
-    var copyFragmentShaderSource="precision lowp float;\n\
+    var copyFragmentShaderSource = "precision lowp float;\n\
          uniform sampler2D samplerImage;\n\
          varying vec2 vUV;\n\
          \n\
          void main(void){\n\
             gl_FragColor=texture2D(samplerImage, vUV);\n\
          }";
-    SHADERCOPY=build_shaderProgram(copyVertexShaderSource, copyFragmentShaderSource, 'VIDEO');
-    var uSampler=GL.getUniformLocation(SHADERCOPY, 'samplerImage');
+    SHADERCOPY = build_shaderProgram(copyVertexShaderSource, copyFragmentShaderSource, 'VIDEO');
+    var uSampler = GL.getUniformLocation(SHADERCOPY, 'samplerImage');
     GL.useProgram(SHADERCOPY);
     GL.uniform1i(uSampler, 0);
-    
+
     return {
         canvas: CANVAS2D,
         ctx: CTX,
-        update_canvasTexture: function(){
-            CANVASTEXTURENEEDSUPDATE=true;
+        update_canvasTexture: function update_canvasTexture() {
+            CANVASTEXTURENEEDSUPDATE = true;
         },
-        draw: function(){ //draw the video and the canvas above
-            GL.viewport(0,0,CV.width, CV.height);
+        draw: function draw() {
+            //draw the video and the canvas above
+            GL.viewport(0, 0, CV.width, CV.height);
             GL.useProgram(SHADERCOPY);
 
             //enable blending
@@ -114,18 +122,18 @@ JEEFACEFILTERAPI.Canvas2DDisplay=function(spec){
             }
             GL.drawElements(GL.TRIANGLES, 3, GL.UNSIGNED_SHORT, 0);
 
-            GL.disable(GL.BLEND);            
+            GL.disable(GL.BLEND);
         }, //end draw()
-        getCoordinates: function(detectedState){
-            COORDINATES.x=Math.round((0.5+0.5*detectedState.x-0.5*detectedState.s)*CV.width);
-            COORDINATES.y=Math.round((0.5+0.5*detectedState.y-0.5*detectedState.s)*CV.height);
-            COORDINATES.w=Math.round(detectedState.s*CV.width);
-            COORDINATES.h=COORDINATES.w;
-            return COORDINATES;   
+        getCoordinates: function getCoordinates(detectedState) {
+            COORDINATES.x = Math.round((0.5 + 0.5 * detectedState.x - 0.5 * detectedState.s) * CV.width);
+            COORDINATES.y = Math.round((0.5 + 0.5 * detectedState.y - 0.5 * detectedState.s) * CV.height);
+            COORDINATES.w = Math.round(detectedState.s * CV.width);
+            COORDINATES.h = COORDINATES.w;
+            return COORDINATES;
         },
-        resize: function(){
-            CANVAS2D.width=CV.width;
-            CANVAS2D.height=CV.height;
+        resize: function resize() {
+            CANVAS2D.width = CV.width;
+            CANVAS2D.height = CV.height;
         }
     }; //end Canvas2DDisplay return value
-} //end JEEFACEFILTERAPI.Canvas2DDisplay()
+}; //end JEEFACEFILTERAPI.Canvas2DDisplay()
