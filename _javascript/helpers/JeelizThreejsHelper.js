@@ -386,7 +386,7 @@ THREE.JeelizHelper = function () {
       var videoAspectRatio = vw / vh;
       var fovFactor = vh > vw ? 1.0 / videoAspectRatio : 1.0;
       var fov = _settings.cameraMinVideoDimFov * fovFactor;
-      var mobileview = 640;
+      var tabletview = 1024;
       var viewwidth = _threeRenderer.domElement.width;
 
       console.log('fovfactor: ', fovFactor);
@@ -401,9 +401,9 @@ THREE.JeelizHelper = function () {
         scale = cvh / vh;
       }
 
-      // the canvas is off a mobile and requires a different scaling.
-      // mobile view has a width of 640px. 
-      if (viewwidth < mobileview) {
+      // mobiles and tablets have a lower fov.
+      // tablet view has a width of 1024px
+      if (viewwidth <= tabletview) {
         _settings.cameraMinVideoDimFov = 10;
       }
 
