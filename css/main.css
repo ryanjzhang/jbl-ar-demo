@@ -6982,8 +6982,7 @@ header {
 .navbar-content {
   margin: 0 auto;
   max-width: 1400px;
-  min-width: 320px;
-  margin: 0 1rem 0 1rem; }
+  min-width: 320px; }
 
 #main {
   margin: 0 auto;
@@ -7065,7 +7064,7 @@ header {
       margin: 2rem 0 2rem 0; }
     #main .columns .whybuy-reason {
       font-size: 14px;
-      color: #ff3300;
+      color: #000000;
       display: inline; }
   #main .breadcrumbs {
     color: #ff3300;
