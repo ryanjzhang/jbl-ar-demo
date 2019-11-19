@@ -136,7 +136,7 @@ function start() {
     },
     followZRot: true,
     canvasId: 'jeeFaceFilterCanvas',
-    NNCpath: '_javascript/dist/', //root of NNC.json file
+    NNCpath: 'lib/dist/', //root of NNC.json file
     callbackReady: function (errCode, spec) {
       if (errCode) {
         console.log('AN ERROR HAPPENS. SORRY BRO :( . ERR =', errCode);
@@ -189,8 +189,8 @@ console.log(file);
   if (navigator.canShare && navigator.canShare({ files: filesArray } )) {
     navigator.share({
       files: filesArray,
-      title: 'Vacation Pictures',
-      text: 'Barb\nHere are the pictures from our vacation.\n\nJoe',
+      title: 'Check this out',
+      text: 'Hello friend\nWhat do you think of this look?\n\nRyan',
     })
     .then(() => console.log('Share was successful.'))
     .catch((error) => console.log('Sharing failed', error));
