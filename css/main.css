@@ -6989,6 +6989,14 @@ header {
   max-width: 1400px;
   min-width: 320px;
   color: black; }
+  #main .slider-for img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%; }
+  #main .slider-nav img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%; }
   #main .columns {
     margin: 0; }
     #main .columns .photo-gallery {
@@ -7221,7 +7229,4 @@ header {
   .navbar-menu .navbar-start .navbar-item {
     color: black; }
   #main .row.breadcrumbs {
-    padding-bottom: 0.75rem; }
-  #main .row.photo {
-    display: flex;
-    justify-content: center; } }
+    padding-bottom: 0.75rem; } }

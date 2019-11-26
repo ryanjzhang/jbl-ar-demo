@@ -74,6 +74,18 @@ header {
   min-width: 320px;
   color: $font-color;
 
+  .slider-for img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 75%;
+  }
+  .slider-nav img {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%;
+  }
+
+  //TODO: change button color
   .columns {
     margin: 0;
     .photo-gallery {
@@ -253,7 +265,7 @@ $swatchtime: 0.4s;
   -o-transition: all $swatchtime;
   transition: all $swatchtime;
 }
-#ar-container{
+#ar-container {
   //position: absolute;
   top: 0;
   left: 0;
@@ -284,7 +296,7 @@ $swatchtime: 0.4s;
   height: 45px;
 }
 
-.image-buttons{
+.image-buttons {
   display: flex;
   flex-direction: row;
   position: absolute;
@@ -292,16 +304,16 @@ $swatchtime: 0.4s;
   width: 100%;
 }
 
-#share-container{
+#share-container {
   position: absolute;
   top: 0;
   left: 0;
   z-index: 30;
 }
-.cancel{
+.cancel {
   background-color: gray;
 }
-.image-btn{
+.image-btn {
   border: none;
   color: gray;
   padding: 12px 16px;
@@ -312,7 +324,7 @@ $swatchtime: 0.4s;
   width: 50%;
 }
 
-#screencapture-img{
+#screencapture-img {
   width: 100%;
   height: 100%;
 }
@@ -377,10 +389,6 @@ $swatchtime: 0.4s;
   #main {
     .row.breadcrumbs {
       padding-bottom: 0.75rem;
-    }
-    .row.photo {
-      display: flex;
-      justify-content: center;
     }
   }
 }
