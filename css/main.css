@@ -7189,10 +7189,6 @@ header {
   width: 100%;
   height: 100%; }
 
-.hero.is-primary,
-.footer {
-  display: none; }
-
 .ar-model .model-viewer {
   width: 100%; }
   .ar-model .model-viewer .container {
