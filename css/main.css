@@ -6997,6 +6997,13 @@ header {
     margin-left: auto;
     margin-right: auto;
     width: 70%; }
+  #main .slick-slider {
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%; }
+  #main .slick-prev:before,
+  #main .slick-next:before {
+    color: #ff3300; }
   #main .columns {
     margin: 0; }
     #main .columns .photo-gallery {
