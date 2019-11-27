@@ -197,6 +197,36 @@ header {
     font-family: "HelveticaNeueW01-75Bold", Helvetica, sans-serif;
     font-size: 14px;
   }
+
+  // Catalogus
+  .cat-title {
+    font-size: 42px;
+    font-weight: bold;
+    font-family: "HelveticaNeueW01-75Bold", Helvetica, sans-serif;
+    color: #333;
+    margin-top: 1rem;
+  }
+
+  .cat-content {
+    display: flex;
+    align-content: center;
+    justify-content: space-evenly;
+    flex-direction: row;
+    flex-wrap: wrap;
+    .temp-box {
+      background-color: red;
+      width: 128px;
+      height: 128px;
+      margin: 30px;
+    }
+    .temp-box2 {
+      background-color: green;
+      width: 128px;
+      height: 128px;
+      margin: 30px;
+
+    }
+  }
 }
 
 //swatches hehe
