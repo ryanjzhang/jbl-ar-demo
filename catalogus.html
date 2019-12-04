@@ -25,6 +25,7 @@
     <link rel="stylesheet" href="css/styleFullScreen.css" type="text/css" />
     <link rel="stylesheet" href="css/font.css" type="text/css" />
     <link rel="stylesheet" href="css/main.css" type="text/css" />
+
   </head>
 
   <body onload="showARElement()">
@@ -72,7 +73,7 @@
         </a>
         <div class="navbar-menu">
           <div class="navbar-start">
-            <a class="navbar-item">
+            <a href="index.html" class="navbar-item">
               <b>Hoofdtelefoon</b>
             </a>
 
@@ -82,6 +83,9 @@
 
             <a href="helm.html" class="navbar-item">
               <b>Helicopter Helm</b>
+            </a>
+            <a href="" class="navbar-item">
+                <b>Catalogus</b>
             </a>
           </div>
         </div>
@@ -100,7 +104,7 @@
       </nav>
       <div id="navbarBasicExample" class="navbar-menu">
         <div class="navbar-start">
-          <a class="navbar-item">
+          <a href="index.html" class="navbar-item">
             <b>Hoofdtelefoon</b>
           </a>
 
@@ -110,6 +114,9 @@
 
           <a href="helm.html" class="navbar-item">
             <b>Helicopter Helm</b>
+          </a>
+          <a href="" class="navbar-item">
+              <b>Catalogus</b>
           </a>
         </div>
       </div>
@@ -121,25 +128,11 @@
         <div id="ios" style="display:none"></div>
         <!-- no ios catalogus -->
         <div id="android" style="display:none">
-          <div class="cat-content">
-            <div class="temp-box"></div>
-            <div class="temp-box2"></div>
-            <div class="temp-box"></div>
-            <div class="temp-box2"></div>
-            <div class="temp-box"></div>
-            <div class="temp-box2"></div>
-            <div class="temp-box"></div>
-            <div class="temp-box2"></div>
-            <div class="temp-box"></div>
-            <div class="temp-box2"></div>
-            <div class="temp-box"></div>
-            <div class="temp-box2"></div>
-            <div class="temp-box"></div>
-            <div class="temp-box2"></div>
-          </div>
+          
         </div>
       </div>
-
+      <div id="app">
+      </div>
       <footer class="footer has-text-centered">
         <div class="container">
           <div class="columns">
@@ -208,6 +201,10 @@
       type="text/javascript"
       src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
     ></script>
+
+    <!-- vuejs -->
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script type="text/javascript" src="vue/components.vue.js"></script>
 
     <!-- mainjs -->
     <script type="text/javascript" src="lib/main.js"></script>
