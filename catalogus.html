@@ -124,12 +124,31 @@
       <div class="rows">
         <h1 align="center" class="cat-title">Catalogus</h1>
         <!-- Ios catalogus -->
-        <div id="ios" style="display:none">
+        <!-- <div id="ios" style="display:none">
           <div id="ios-content"></div>
-        </div>
+        </div> -->
         <!-- no ios catalogus -->
-        <div id="android" style="display:none">
+        <!-- <div id="android" style="display:none">
           <div id="android-content"></div>
+        </div> -->
+        <div id="app">
+          <section v-if="errored">
+            <p>
+              We're sorry, we're not able to retrieve this information at the
+              moment, please try back later
+            </p>
+          </section>
+
+          <section v-else>
+            <div v-if="loading">Loading...</div>
+
+            <div v-else v-for="result in results.slice(0, 2)" >
+              <p>{{ result.title }}</p>
+              <img v-bind:src=result.url >
+            <!-- <div v-else v-for="result in results" >
+              <p>{{ result.title }}</p>
+            </div> -->
+          </section>
         </div>
       </div>
     </div>
@@ -203,9 +222,10 @@
 
     <!-- vuejs -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
-    <script type="text/javascript" src="vue/components.vue.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
 
     <!-- mainjs -->
+    <script type="text/javascript" src="lib/vue.js"></script>
     <script type="text/javascript" src="lib/main.js"></script>
   </body>
 </html>
