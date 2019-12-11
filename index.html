@@ -377,47 +377,9 @@
               </div>
               <!-- Jeeliz changes-->
               <div class="buttons">
-                <button class="button is-info is-light" onclick="main()">
+                <a class="button is-info is-light" href="ar.html">
                   Go AR
-                </button>
-                <div id="ar-container" style="display: none">
-                  <canvas
-                    width=" 600"
-                    height="600"
-                    id="jeeFaceFilterCanvas"
-                    style="display: block;"
-                  ></canvas>
-                  <button
-                    class="close-ar-btn button is-info is-light"
-                    onclick="stop()"
-                  >
-                    Close AR
-                  </button>
-                  <button
-                    class="screencapture-btn button is-info is-light"
-                    onclick="screenCapture()"
-                  >
-                    Take picture!
-                  </button>
-                </div>
-
-                <div id="share-container" style="display: none">
-                  <img id="screencapture-img" />
-                  <div class="image-buttons">
-                    <button
-                      class="image-btn button is-info is-light cancel"
-                      onclick="cancelImage()"
-                    >
-                      Cancel
-                    </button>
-                    <button
-                      class="image-btn button is-info is-light"
-                      onclick="shareImage()"
-                    >
-                      Share
-                    </button>
-                  </div>
-                </div>
+                </a>
               </div>
               <!-- Jeeliz changes-->
             </div>
@@ -461,15 +423,19 @@
     </div>
 
     <!--- javascript --->
+
+    <!-- tastenkunst -->
+    <script type="module" src="_javascript/js/examples/ar_controls.js"></script>
+
     <!-- threejs -->
     <script src="lib/libs/threejs/v106/three.js"></script>
     <script src="lib/libs/threejs/v97/GLTFLoader.js"></script>
 
-    <!-- Jeeliz -->
+    <!-- Jeeliz
     <script src="lib/dist/jeelizFaceFilter.js"></script>
     <script src="lib/helpers/JeelizResizer.js"></script>
     <script src="lib/helpers/JeelizThreejsHelper.js"></script>
-    <script src="lib/demo_gltf.js"></script>
+    <script src="lib/demo_gltf.js"></script> -->
 
     <!-- Google AR Modelviewer -->
     <script
