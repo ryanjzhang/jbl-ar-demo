@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
 
   <meta charset="utf-8">
@@ -15,29 +16,25 @@
 
 <body onload="startAR()">
 
-<div id="__brfv5" class="__brfv5" >
-  <button class="button is-info is-light cancel" onclick="history.go(-1)">Cancel</button>
-  <button class="button is-info is-light" onclick="screenCapture()">Take picture!</button>
-</div>
-<div id="share-content">
-  <canvas id="screenCaptureCanvas"></canvas>
-  <div class="image-buttons">
-    <button
-      class="image-btn button is-info is-light cancel"
-      onclick="cancelImage()"
-    >
-      Cancel
-    </button>
-    <button
-      class="image-btn button is-info is-light"
-      onclick="shareImage()"
-    >
-      Share
-    </button>
+  <div id="__brfv5" class="__brfv5">
+    <div class="image-buttons">
+      <button class="image-btn button is-info is-light cancel" onclick="history.go(-1)">Cancel</button>
+      <button class="image-btn button is-info is-light" onclick="screenCapture()">Take picture!</button>
+    </div>
   </div>
-</div>
-<script type="module" src="js/examples/ar_controls.js">
-</script>
+  <div id="share-content">
+    <canvas id="screenCaptureCanvas"></canvas>
+    <div class="image-buttons">
+      <button class="image-btn button is-info is-light cancel" onclick="cancelImage()">
+        Cancel
+      </button>
+      <button class="image-btn button is-info is-light" onclick="shareImage()">
+        Share
+      </button>
+    </div>
+  </div>
+  <script type="module" src="js/examples/ar_controls.js">
+  </script>
 
 
 </body>
