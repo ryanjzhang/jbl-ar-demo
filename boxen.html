@@ -1,22 +1,21 @@
 <!DOCTYPE html>
 <html>
-
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>JBL 5.1 Luidsprekers</title>
 
     <!-- Jeelizzzz-->
     <link rel="stylesheet" href="css/styleFullScreen.css" type="text/css" />
     <!-- Jeelizzzz-->
 
-    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon">
-    <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/font.css">
+    <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
+    <link rel="stylesheet" href="css/main.css" />
+    <link rel="stylesheet" href="css/font.css" />
 
     <!--Jeeliz changes-->
-    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="content-language" content="en-EN" />
 
     <!-- INCLUDE JEELIZ FACEFILTER SCRIPT -->
@@ -38,174 +37,237 @@
     <!-- Jeeliz end-->
 
     <!-- Model viewer IMPORT-->
-    <script type="module" src="https://unpkg.com/@google/model-viewer@v0.6.0/dist/model-viewer.js"></script>
+    <script
+      type="module"
+      src="https://unpkg.com/@google/model-viewer@v0.6.0/dist/model-viewer.js"
+    ></script>
+  </head>
 
-</head>
-
-<body onload="showARElement()">
+  <body onload="showARElement()">
     <header>
-        <nav class="navbar pencil">
-            <div class="navbar-content">
-                <div class="navbar-end">
-                    <a class="navbar-item">
-                        Discover JBL
-                    </a>
-                    <a class="navbar-item">
-                        Registreer je product
-                    </a>
-
-                    <a class="navbar-item">
-                        Auto Manufacturers
-                    </a>
-
-                    <a class="navbar-item">
-                        Klantenservice
-                    </a>
-                </div>
-            </div>
-        </nav>
-        <nav class="navbar navbar-content" role="navigation" aria-label="main navigation">
-            <div class="navbar-brand">
-                <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false"
-                    data-target="navbarBasicExample">
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                    <span aria-hidden="true"></span>
-                </a>
-            </div>
-            <a class="navbar-logo">
-                <img src="images/jbllogo.svg">
+      <nav class="navbar pencil">
+        <div class="navbar-content">
+          <div class="navbar-end">
+            <a class="navbar-item">
+              Discover JBL
             </a>
-            <div class="navbar-menu">
+            <a class="navbar-item">
+              Registreer je product
+            </a>
 
-                <div class="navbar-start">
-                    <a href="index.html" class="navbar-item">
-                        <b>Hoofdtelefoon</b>
-                    </a>
+            <a class="navbar-item">
+              Auto Manufacturers
+            </a>
 
-                    <a class="navbar-item">
-                        <b>Luidsprekers</b>
-                    </a>
-
-                    <a href="helm.html" class="navbar-item">
-                        <b>Helicopter Helm</b>
-                    </a>
-                </div>
-            </div>
-
-            <div class="navbar-end">
-                <div class="navbar-item">
-                    <img src="images/search-icon.svg">
-                </div>
-                <div class="navbar-item">
-                    <img src="images/person-icon.svg">
-                </div>
-                <div class="navbar-item">
-                    <img src="images/cart-icon.svg">
-                </div>
-            </div>
-
-        </nav>
-        <div id="navbarBasicExample" class="navbar-menu">
-
-            <div class="navbar-start">
-                <a href="index.html" class="navbar-item">
-                    <b>Hoofdtelefoon</b>
-                </a>
-
-                <a class="navbar-item">
-                    <b>Luidsprekers</b>
-                </a>
-
-                <a href="helm.html" class="navbar-item">
-                    <b>Helicopter Helm</b>
-                </a>
-            </div>
+            <a class="navbar-item">
+              Klantenservice
+            </a>
+          </div>
         </div>
+      </nav>
+      <nav
+        class="navbar navbar-content"
+        role="navigation"
+        aria-label="main navigation"
+      >
+        <div class="navbar-brand">
+          <a
+            role="button"
+            class="navbar-burger burger"
+            aria-label="menu"
+            aria-expanded="false"
+            data-target="navbarBasicExample"
+          >
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+        <a class="navbar-logo">
+          <img src="images/jbllogo.svg" />
+        </a>
+        <div class="navbar-menu">
+          <div class="navbar-start">
+            <a href="index.html" class="navbar-item">
+              <b>Hoofdtelefoon</b>
+            </a>
+
+            <a href="" class="navbar-item">
+              <b>Luidsprekers</b>
+            </a>
+
+            <a href="helm.html" class="navbar-item">
+              <b>Helicopter Helm</b>
+            </a>
+            <a href="catalogus.html" class="navbar-item">
+              <b>Catalogus</b>
+            </a>
+          </div>
+        </div>
+
+        <div class="navbar-end">
+          <div class="navbar-item">
+            <img src="images/search-icon.svg" />
+          </div>
+          <div class="navbar-item">
+            <img src="images/person-icon.svg" />
+          </div>
+          <div class="navbar-item">
+            <img src="images/cart-icon.svg" />
+          </div>
+        </div>
+      </nav>
+      <div id="navbarBasicExample" class="navbar-menu">
+        <div class="navbar-start">
+          <a href="index.html" class="navbar-item">
+            <b>Hoofdtelefoon</b>
+          </a>
+
+          <a href="" class="navbar-item">
+            <b>Luidsprekers</b>
+          </a>
+
+          <a href="helm.html" class="navbar-item">
+            <b>Helicopter Helm</b>
+          </a>
+          <a href="catalogus.html" class="navbar-item">
+            <b>Catalogus</b>
+          </a>
+        </div>
+      </div>
     </header>
     <div id="main">
-        <div class="columns">
-            <div class="column product-gallery is-two-thirds">
-                <div class="rows">
-                    <div class="row">
-                        <div class="breadcrumbs">
-                            <p>Thuis > Luidsprekers > In home entertainment > JBL Bar 5.1</p>
-                        </div>
-
-                    </div>
-                    <div id="ios" style="display:none" class="row photo">
-                        <a rel="ar" href="models/JBL_Bar5.1_Subwoofer.usdz"> <img src="images/jblbass.jpg"
-                                alt="AR View" />
-                        </a>
-                    </div>
-                    <div id="android" style="display:none" class="row photo">
-                        <img src="images/jblbass.jpg" alt="AR View" />
-                    </div>
-                </div>
-
+      <div class="columns">
+        <div class="column product-gallery is-two-thirds">
+          <div class="rows">
+            <div class="row">
+              <div class="breadcrumbs">
+                <p>
+                  Thuis > Luidsprekers > In home entertainment > JBL Bar 5.1
+                </p>
+              </div>
             </div>
-            <div class="column product-details">
-                <div class="rows">
-                    <div class="row">
-                        <div class="product-title">
-                            <h1>JBL Bar 5.1</h1>
-                        </div>
-                        <div class="product-description">
-                            5.1-kanaals 4K Ultra HD soundbar met volledig draadloze surround-luidsprekers (True Wireless
-                            Surround)
-                        </div>
-                        <div class="review-stars">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                <path fill="#f5bf03"
-                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                <path fill="#f5bf03"
-                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                <path fill="#f5bf03"
-                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                <path fill="#f5bf03"
-                                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z" />
-                            </svg>
-                            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24">
-                                <path fill="#f5bf03"
-                                    d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524v-12.005zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z" />
-
-                            </svg>
-                        </div>
-                        <ul>
-                            <li> <img class="refurbished-detailsLi" src="images/noiconimage_ref.png">
-                                JBL Signature Sound</li>
-                            <li> <img class="refurbished-detailsLi" src="images/noiconimage_ref.png">
-                                Krijg hulp van je stemassistent.</li>
-                            <li> <img class="refurbished-detailsLi" src="images/noiconimage_ref.png">
-                                Druk op afspelen. Demp geluiden om je heen</li>
-                        </ul>
-                    </div>
-                    <div class="row">
-                        <a href="#" class="icon-btn swatchblack">
-                            <i class="icon-circle"></i><span></span>
-                        </a>
-                        <a href="#" class="icon-btn swatchwhite">
-                            <i class="icon-circle"></i><span></span>
-                        </a>
-                        <a href="#" class="icon-btn swatchblue">
-                            <i class="icon-circle"></i><span></span>
-                        </a>
-                    </div>
-                    <div class="row">
-                        <div class="product-price ">
-                            <span class="price-sales">€ 599,00</span>
-                            <span class="price-each">per stuk</span>
-                            <span class="price-standard">€ 999,00</span>
-                            <span class="price-off-option"> Bespaar 40%</span>
-                        </div>
-                    </div>
-                    <!-- <div class="row">
+            <div id="ios" style="display:none" class="row photo">
+              <a rel="ar" href="models/JBL_Bar5.1_Subwoofer.usdz">
+                <img src="images/jblbass.jpg" alt="AR View" />
+              </a>
+            </div>
+            <div id="android" style="display:none" class="row photo">
+              <img src="images/jblbass.jpg" alt="AR View" />
+            </div>
+          </div>
+        </div>
+        <div class="column product-details">
+          <div class="rows">
+            <div class="row">
+              <div class="product-title">
+                <h1>JBL Bar 5.1</h1>
+              </div>
+              <div class="product-description">
+                5.1-kanaals 4K Ultra HD soundbar met volledig draadloze
+                surround-luidsprekers (True Wireless Surround)
+              </div>
+              <div class="review-stars">
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="#f5bf03"
+                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="#f5bf03"
+                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="#f5bf03"
+                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="#f5bf03"
+                    d="M12 .587l3.668 7.568 8.332 1.151-6.064 5.828 1.48 8.279-7.416-3.967-7.417 3.967 1.481-8.279-6.064-5.828 8.332-1.151z"
+                  />
+                </svg>
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="20"
+                  height="20"
+                  viewBox="0 0 24 24"
+                >
+                  <path
+                    fill="#f5bf03"
+                    d="M12 5.173l2.335 4.817 5.305.732-3.861 3.71.942 5.27-4.721-2.524v-12.005zm0-4.586l-3.668 7.568-8.332 1.151 6.064 5.828-1.48 8.279 7.416-3.967 7.416 3.966-1.48-8.279 6.064-5.827-8.332-1.15-3.668-7.569z"
+                  />
+                </svg>
+              </div>
+              <ul>
+                <li>
+                  <img
+                    class="refurbished-detailsLi"
+                    src="images/noiconimage_ref.png"
+                  />
+                  JBL Signature Sound
+                </li>
+                <li>
+                  <img
+                    class="refurbished-detailsLi"
+                    src="images/noiconimage_ref.png"
+                  />
+                  Krijg hulp van je stemassistent.
+                </li>
+                <li>
+                  <img
+                    class="refurbished-detailsLi"
+                    src="images/noiconimage_ref.png"
+                  />
+                  Druk op afspelen. Demp geluiden om je heen
+                </li>
+              </ul>
+            </div>
+            <div class="row">
+              <a href="#" class="icon-btn swatchblack">
+                <i class="icon-circle"></i><span></span>
+              </a>
+              <a href="#" class="icon-btn swatchwhite">
+                <i class="icon-circle"></i><span></span>
+              </a>
+              <a href="#" class="icon-btn swatchblue">
+                <i class="icon-circle"></i><span></span>
+              </a>
+            </div>
+            <div class="row">
+              <div class="product-price ">
+                <span class="price-sales">€ 599,00</span>
+                <span class="price-each">per stuk</span>
+                <span class="price-standard">€ 999,00</span>
+                <span class="price-off-option"> Bespaar 40%</span>
+              </div>
+            </div>
+            <!-- <div class="row">
                         <div class="product-add-to-cart">
 
                             <span class="sr-only">Product Actions</span>
@@ -238,78 +300,74 @@
                             
                         </div>
                     </div> -->
-                    <p class="in-stock-msg">Op voorraad. Verwachte levertijd is 1-2 werkdagen</p>
-                    <div class="row">
-                        <div class="whybuy-reason is-">
-                            <i class="icon-shipping-truk"></i>
-                            <span>Gratis verzending</span>
-                        </div>
-                        <div class="whybuy-reason col-xs-4">
-                            <i class="icon-arrow-return"></i>
-                            <span>Gratis retourneren</span>
-                        </div>
+            <p class="in-stock-msg">
+              Op voorraad. Verwachte levertijd is 1-2 werkdagen
+            </p>
+            <div class="row">
+              <div class="whybuy-reason is-">
+                <i class="icon-shipping-truk"></i>
+                <span>Gratis verzending</span>
+              </div>
+              <div class="whybuy-reason col-xs-4">
+                <i class="icon-arrow-return"></i>
+                <span>Gratis retourneren</span>
+              </div>
 
-                        <div class="whybuy-reason col-xs-4">
-                            <i class="icon-support-headset"></i>
-                            <span>Levenslange ondersteuning</span>
-                        </div>
-                        <!-- Jeeliz changes-->
-                        <div class="ar-model">
-                            <model-viewer src="https://giamoe.github.io/resources/redrose.glb"
-                                alt="A 3D model of a rose" shadow-intensity="1" camera-controls
-                                interaction-prompt="auto" auto-rotate ar magic-leap>
-                            </model-viewer>
-                        </div>
-                        <!-- Jeeliz changes-->
-                    </div>
-                </div>
+              <div class="whybuy-reason col-xs-4">
+                <i class="icon-support-headset"></i>
+                <span>Levenslange ondersteuning</span>
+              </div>
+              <!-- Jeeliz changes-->
+              <div class="ar-model">
+                <model-viewer
+                  src="https://giamoe.github.io/resources/redrose.glb"
+                  alt="A 3D model of a rose"
+                  shadow-intensity="1"
+                  camera-controls
+                  interaction-prompt="auto"
+                  auto-rotate
+                  ar
+                  magic-leap
+                >
+                </model-viewer>
+              </div>
+              <!-- Jeeliz changes-->
             </div>
+          </div>
         </div>
-        <section class="hero is-medium is-primary">
-            <div class="hero-body">
-                <div class="container">
-                    <div class="columns">
-                        <div class="column is-8-desktop is-offset-2-desktop">
-                            <h1 class="title is-2 is-spaced">
-                                Hello Bulma!
-                            </h1>
-                            <h2 class="subtitle is-4">
-                                Congratulations! You're running the <strong>Bulma start</strong> project.
-                                <br>
-                                It includes everything you need to <strong>build your own website</strong> with
-                                Bulma.
-                            </h2>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <footer class="footer has-text-centered">
-            <div class="container">
-                <div class="columns">
-                    <div class="column is-8-desktop is-offset-2-desktop">
-                        <p>
-                            <strong class="has-text-weight-semibold">
-                                <a href="https://www.npmjs.com/package/bulma-start">bulma-start@0.0.3</a>
-                            </strong>
-                        </p>
-                        <p>
-                            <small>
-                                Source code licensed <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
-                            </small>
-                        </p>
-                        <p style="margin-top: 1rem;">
-                            <a href="http://bulma.io">
-                                <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24">
-                            </a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </footer>
-        <script type="text/javascript" src="lib/main.js"></script>
-
-</body>
-
+      </div>
+    </div>
+    <footer class="footer has-text-centered">
+      <div class="container">
+        <div class="columns">
+          <div class="column is-8-desktop is-offset-2-desktop">
+            <p>
+              <strong class="has-text-weight-semibold">
+                <a href="https://www.npmjs.com/package/bulma-start"
+                  >bulma-start@0.0.3</a
+                >
+              </strong>
+            </p>
+            <p>
+              <small>
+                Source code licensed
+                <a href="http://opensource.org/licenses/mit-license.php">MIT</a>
+              </small>
+            </p>
+            <p style="margin-top: 1rem;">
+              <a href="http://bulma.io">
+                <img
+                  src="made-with-bulma.png"
+                  alt="Made with Bulma"
+                  width="128"
+                  height="24"
+                />
+              </a>
+            </p>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <script type="text/javascript" src="lib/main.js"></script>
+  </body>
 </html>

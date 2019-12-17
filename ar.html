@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=0.75">
+
+
+
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/font.css" />
+  <link rel="stylesheet" type="text/css" href="./css/brfv5_examples.css">
+
+</head>
+
+<body onload="startAR()">
+
+  <div id="__brfv5" class="__brfv5">
+    <div class="image-buttons">
+      <button class="image-btn button is-info is-light cancel" onclick="history.go(-1)">Cancel</button>
+      <button class="image-btn button is-info is-light" onclick="screenCapture()">Take picture!</button>
+    </div>
+  </div>
+  <div id="share-content" class="__brfv5">
+    <canvas id="screenCaptureCanvas"></canvas>
+    <div class="image-buttons">
+      <button class="image-btn button is-info is-light cancel" onclick="cancelImage()">
+        Cancel
+      </button>
+      <button class="image-btn button is-info is-light" onclick="shareImage()">
+        Share
+      </button>
+    </div>
+  </div>
+  <script type="module" src="js/examples/ar_controls.js">
+  </script>
+
+
+</body>
+
+</html>
