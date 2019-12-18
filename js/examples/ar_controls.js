@@ -63,7 +63,7 @@ window.shareImage = function shareImage() {
         var link = document.createElement("a");
 
         link.setAttribute("href", dataUrl);
-        link.setAttribute("download", dataUrl);
+        link.setAttribute("download", 'image.png');
         link.click();
     }
 }
