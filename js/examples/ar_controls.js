@@ -10,8 +10,23 @@ const stop = () => {
 }
 
 const start = () => {
-    document.getElementById('share-content').style.display = 'none'
+    document.getElementById('share-content').style.display = 'none';
+    canShare();
+    var shareBtn = document.getElementById('share-btn');
+
     run()
+}
+
+function canShare() {
+    var file = dataURLtoFile(document.getElementById('screenCaptureCanvas').toDataURL(), 'image.png');
+    var filesArray = [];
+    filesArray.push(file);
+    var shareBtn = document.getElementById('share-btn')
+    if (navigator.canShare && navigator.canShare({ files: filesArray })) {
+        shareBtn.firstChild.data = 'Share';
+    } else {
+        shareBtn.firstChild.data = 'Save';
+    }
 }
 
 function dataURLtoFile(dataurl, filename) {
@@ -30,10 +45,12 @@ function dataURLtoFile(dataurl, filename) {
 }
 
 window.shareImage = function shareImage() {
-    var file = dataURLtoFile(document.getElementById('screenCaptureCanvas').toDataURL(), 'image.png');
+    var dataUrl = document.getElementById('screenCaptureCanvas').toDataURL();
+    var file = dataURLtoFile(dataUrl, 'image.png');
     console.log(file);
     var filesArray = [];
     filesArray.push(file);
+    var shareBtn = document.getElementById('share-btn')
     if (navigator.canShare && navigator.canShare({ files: filesArray })) {
         navigator.share({
             files: filesArray,
@@ -43,7 +60,11 @@ window.shareImage = function shareImage() {
             .then(() => console.log('Share was successful.'))
             .catch((error) => console.log('Sharing failed', error));
     } else {
-        console.log('Your system doesn\'t support sharing files.');
+        var link = document.createElement("a");
+
+        link.setAttribute("href", dataUrl);
+        link.setAttribute("download", dataUrl);
+        link.click();
     }
 }
 
