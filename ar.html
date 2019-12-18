@@ -22,13 +22,13 @@
       <button class="image-btn button is-info is-light" onclick="screenCapture()">Take picture!</button>
     </div>
   </div>
-  <div id="share-content" class="__brfv5">
+  <div id="share-content">
     <canvas id="screenCaptureCanvas"></canvas>
     <div class="image-buttons">
       <button class="image-btn button is-info is-light cancel" onclick="cancelImage()">
         Cancel
       </button>
-      <button class="image-btn button is-info is-light" onclick="shareImage()">
+      <button id="share-btn" class="image-btn button is-info is-light" onclick="shareImage()">
         Share
       </button>
     </div>
