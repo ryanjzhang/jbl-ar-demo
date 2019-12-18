@@ -140,14 +140,36 @@
           </section>
 
           <section v-else>
-            <div v-if="loading">Loading...</div>
+            <div class="cat-content">
+              <div v-if="loading">Loading...</div>
+              <div v-else v-for="result in results">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <a rel="ar" v-bind:href="result.modelurl">
+                        <img
+                          v-bind:src="result.photourl"
+                          alt="Due to an error, the image could not load :("
+                        />
+                      </a>
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-4">{{ result.title }}</p>
+                        <p class="subtitle is-6">{{ result.description }}</p>
+                      </div>
+                    </div>
 
-            <div v-else v-for="result in results.slice(0, 2)" >
-              <p>{{ result.title }}</p>
-              <img v-bind:src=result.url >
-            <!-- <div v-else v-for="result in results" >
-              <p>{{ result.title }}</p>
-            </div> -->
+                    <div class="content">
+                      <p><strong>Model type: </strong>{{ result.modeltype }}</p>
+                      <strong>Price: </strong>{{ result.price }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
           </section>
         </div>
       </div>
@@ -223,8 +245,10 @@
     <!-- vuejs -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/axios/0.19.0/axios.min.js"></script>
+    <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
     <!-- mainjs -->
+    <script type="text/javascript" src="lib/router.js"></script>
     <script type="text/javascript" src="lib/vue.js"></script>
     <script type="text/javascript" src="lib/main.js"></script>
   </body>

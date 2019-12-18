@@ -44,13 +44,15 @@
 //   </div>`
 // });
 
+
+Vue.use(VueRouter)
 // mainurl
 //const url = "https://raw.githubusercontent.com/Bvanderwolf/bvanderwolf.github.io/master/models/model10.json";
 
 // photo test url
-const url = "https://jsonplaceholder.typicode.com/photos?albumId=1";
+const url = "https://raw.githubusercontent.com/Bvanderwolf/bvanderwolf.github.io/master/modelMap.json";
 
-var app = new Vue({
+new Vue({
   el: "#app",
   data: {
     results: []
@@ -59,6 +61,6 @@ var app = new Vue({
     axios
       .get(url)
       .then(response => (this.results = response.data))
-      .catch(error => console.log(errors));
+      .catch(error => console.log(error));
   }
 });
