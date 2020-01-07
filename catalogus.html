@@ -115,18 +115,13 @@
         </div> -->
         <div id="vueDataGrab">
           <div class="cat-content">
-            <div v-if="results.length > 1">
-              <a rel="ar" v-bind:href="results[1].modelBase" v-bind:download="results[1].title">
-                <img v-bind:src="results[1].photoBase" alt="Due to an error, the image could not load :(" />
-              </a>
-            </div>
             <div v-for="result in results">
               <div class="card">
                 <div class="card-image">
                   <figure class="image is-4by3">
-                    <!-- <a rel="ar" v-bind:href="result.modelBase" v-bind:download="result.title">
+                    <a rel="ar" v-bind:href="result.modelBase" v-bind:download="result.title">
                       <img v-bind:src="result.photoBase" alt="Due to an error, the image could not load :(" />
-                    </a> -->
+                    </a>
                   </figure>
                 </div>
                 <div class="card-content">
@@ -179,8 +174,6 @@
     <!-- threejs -->
     <script src="lib/libs/threejs/v106/three.js"></script>
     <script src="lib/libs/threejs/v97/GLTFLoader.js"></script>
-
-
 
     <!-- Google AR Modelviewer -->
     <script type="module" src="https://unpkg.com/@google/model-viewer@v0.6.0/dist/model-viewer.js"></script>
