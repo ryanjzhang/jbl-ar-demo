@@ -12,22 +12,14 @@
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
     <!--- css --->
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"
-    />
-    <link
-      rel="stylesheet"
-      type="text/css"
-      href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css"
-    />
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css" />
+    <link rel="stylesheet" type="text/css" href="//cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.8/slick-theme.min.css" />
     <link rel="stylesheet" href="css/styleFullScreen.css" type="text/css" />
     <link rel="stylesheet" href="css/font.css" type="text/css" />
     <link rel="stylesheet" href="css/main.css" type="text/css" />
   </head>
 
-  <body onload="showARElement()">
+  <body>
     <header>
       <nav class="navbar pencil">
         <div class="navbar-content">
@@ -49,19 +41,9 @@
           </div>
         </div>
       </nav>
-      <nav
-        class="navbar navbar-content"
-        role="navigation"
-        aria-label="main navigation"
-      >
+      <nav class="navbar navbar-content" role="navigation" aria-label="main navigation">
         <div class="navbar-brand">
-          <a
-            role="button"
-            class="navbar-burger burger"
-            aria-label="menu"
-            aria-expanded="false"
-            data-target="navbarBasicExample"
-          >
+          <a role="button" class="navbar-burger burger" aria-label="menu" aria-expanded="false" data-target="navbarBasicExample">
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
             <span aria-hidden="true"></span>
@@ -131,46 +113,38 @@
         <!-- <div id="android" style="display:none">
           <div id="android-content"></div>
         </div> -->
-        <div id="app">
-          <section v-if="errored">
-            <p>
-              We're sorry, we're not able to retrieve this information at the
-              moment, please try back later
-            </p>
-          </section>
-
-          <section v-else>
-            <div class="cat-content">
-              <div v-if="loading">Loading...</div>
-              <div v-else v-for="result in results">
-                <div class="card">
-                  <div class="card-image">
-                    <figure class="image is-4by3">
-                      <a rel="ar" v-bind:href="result.modelurl">
-                        <img
-                          v-bind:src="result.photourl"
-                          alt="Due to an error, the image could not load :("
-                        />
-                      </a>
-                    </figure>
+        <div id="vueDataGrab">
+          <div class="cat-content">
+            <div v-if="results.length > 1">
+              <a rel="ar" v-bind:href="results[1].modelBase" v-bind:download="results[1].title">
+                <img v-bind:src="results[1].photoBase" alt="Due to an error, the image could not load :(" />
+              </a>
+            </div>
+            <div v-for="result in results">
+              <div class="card">
+                <div class="card-image">
+                  <figure class="image is-4by3">
+                    <!-- <a rel="ar" v-bind:href="result.modelBase" v-bind:download="result.title">
+                      <img v-bind:src="result.photoBase" alt="Due to an error, the image could not load :(" />
+                    </a> -->
+                  </figure>
+                </div>
+                <div class="card-content">
+                  <div class="media">
+                    <div class="media-content">
+                      <p class="title is-4">{{ result.title }}</p>
+                      <p class="subtitle is-6">{{ result.description }}</p>
+                    </div>
                   </div>
-                  <div class="card-content">
-                    <div class="media">
-                      <div class="media-content">
-                        <p class="title is-4">{{ result.title }}</p>
-                        <p class="subtitle is-6">{{ result.description }}</p>
-                      </div>
-                    </div>
 
-                    <div class="content">
-                      <p><strong>Model type: </strong>{{ result.modeltype }}</p>
-                      <strong>Price: </strong>{{ result.price }}
-                    </div>
+                  <div class="content">
+                    <p><strong>Model type: </strong>{{ result.modeltype }}</p>
+                    <strong>Price: </strong>{{ result.price }}
                   </div>
                 </div>
               </div>
             </div>
-          </section>
+          </div>
         </div>
       </div>
     </div>
@@ -180,9 +154,7 @@
           <div class="column is-8-desktop is-offset-2-desktop">
             <p>
               <strong class="has-text-weight-semibold">
-                <a href="https://www.mobile-development.org/"
-                  >Project Mobile Development</a
-                >
+                <a href="https://www.mobile-development.org/">Project Mobile Development</a>
               </strong>
             </p>
             <p>
@@ -195,12 +167,7 @@
             </p>
             <p>
               <a href="http://bulma.io">
-                <img
-                  src="made-with-bulma.png"
-                  alt="Made with Bulma"
-                  width="128"
-                  height="24"
-                />
+                <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24" />
               </a>
             </p>
           </div>
@@ -220,27 +187,15 @@
     <script src="lib/demo_gltf.js"></script>
 
     <!-- Google AR Modelviewer -->
-    <script
-      type="module"
-      src="https://unpkg.com/@google/model-viewer@v0.6.0/dist/model-viewer.js"
-    ></script>
+    <script type="module" src="https://unpkg.com/@google/model-viewer@v0.6.0/dist/model-viewer.js"></script>
 
     <!-- jquery -->
-    <script
-      type="text/javascript"
-      src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"
-    ></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 
-    <script
-      type="text/javascript"
-      src="//code.jquery.com/jquery-migrate-1.2.1.min.js"
-    ></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
 
     <!-- slickjs (carousel) -->
-    <script
-      type="text/javascript"
-      src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"
-    ></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
 
     <!-- vuejs -->
     <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
@@ -248,8 +203,8 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
     <!-- mainjs -->
-    <script type="text/javascript" src="lib/router.js"></script>
-    <script type="text/javascript" src="lib/vue.js"></script>
+    <script type="text/javascript" src="lib/vueDataGrab.js"></script>
+    <!-- <script type="text/javascript" src="lib/vue.js"></script> -->
     <script type="text/javascript" src="lib/main.js"></script>
   </body>
 </html>
