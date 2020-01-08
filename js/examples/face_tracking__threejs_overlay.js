@@ -72,7 +72,6 @@ export const configureExample = brfv5Config => {
   request.send(null);
 
   var base64 = wasNull ? JSON.parse(request.responseText)["content"] : btoa(request.responseText);
-  console.log(base64);
 
   load3DModel("data:text/plain;base64," + base64, null, null)
     .then(() => {
