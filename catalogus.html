@@ -123,32 +123,21 @@
     <div id="main">
       <div class="rows">
         <h1 align="center" class="cat-title">Catalogus</h1>
-        <!-- Ios catalogus -->
-        <!-- <div id="ios" style="display:none">
-          <div id="ios-content"></div>
-        </div> -->
-        <!-- no ios catalogus -->
-        <!-- <div id="android" style="display:none">
-          <div id="android-content"></div>
-        </div> -->
-        <div id="app">
-          <section v-if="errored">
-            <p>
-              We're sorry, we're not able to retrieve this information at the
-              moment, please try back later
-            </p>
-          </section>
 
-          <section v-else>
+        <div id="android" style="display:none">
+          <div id="vueDataGrab-android">
             <div class="cat-content">
-              <div v-if="loading">Loading...</div>
-              <div v-else v-for="result in results">
+              <div v-for="result in results">
                 <div class="card">
                   <div class="card-image">
                     <figure class="image is-4by3">
-                      <a rel="ar" v-bind:href="result.modelurl">
+                      <a
+                        rel="ar"
+                        v-bind:href="result.modelBase"
+                        v-bind:download="result.title"
+                      >
                         <img
-                          v-bind:src="result.photourl"
+                          v-bind:src="result.photoBase"
                           alt="Due to an error, the image could not load :("
                         />
                       </a>
@@ -170,7 +159,45 @@
                 </div>
               </div>
             </div>
-          </section>
+          </div>
+        </div>
+
+        <div id="ios" style="display:none">
+          <div id="vueDataGrab-ios">
+            <div class="cat-content">
+              <div v-for="result in results">
+                <div class="card">
+                  <div class="card-image">
+                    <figure class="image is-4by3">
+                      <a
+                        rel="ar"
+                        v-bind:href="result.modelBase"
+                        v-bind:download="result.title"
+                      >
+                        <img
+                          v-bind:src="result.photoBase"
+                          alt="Due to an error, the image could not load :("
+                        />
+                      </a>
+                    </figure>
+                  </div>
+                  <div class="card-content">
+                    <div class="media">
+                      <div class="media-content">
+                        <p class="title is-4">{{ result.title }}</p>
+                        <p class="subtitle is-6">{{ result.description }}</p>
+                      </div>
+                    </div>
+
+                    <div class="content">
+                      <p><strong>Model type: </strong>{{ result.modeltype }}</p>
+                      <strong>Price: </strong>{{ result.price }}
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
@@ -213,8 +240,6 @@
     <script src="lib/libs/threejs/v106/three.js"></script>
     <script src="lib/libs/threejs/v97/GLTFLoader.js"></script>
 
-
-
     <!-- Google AR Modelviewer -->
     <script
       type="module"
@@ -244,8 +269,8 @@
     <script src="https://unpkg.com/vue-router/dist/vue-router.js"></script>
 
     <!-- mainjs -->
-    <script type="text/javascript" src="lib/router.js"></script>
-    <script type="text/javascript" src="lib/vue.js"></script>
+    <script type="text/javascript" src="lib/vueDataGrab.js"></script>
+    <!-- <script type="text/javascript" src="lib/vue.js"></script> -->
     <script type="text/javascript" src="lib/main.js"></script>
   </body>
 </html>
