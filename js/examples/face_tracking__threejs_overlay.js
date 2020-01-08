@@ -61,7 +61,9 @@ export const configureExample = brfv5Config => {
 
   var request = new XMLHttpRequest();
   const location = window.location.toString();
-  var url = location.indexOf("modelurl=") != -1 ? location.substring(location.indexOf("modelurl=")) : "";
+
+  var url = location.indexOf("modelurl=") != -1 ? location.split("modelurl=")[1] : "";
+
   var wasNull = false;
   if (url == "") {
     url = "https://api.github.com/repos/myvuvuzela/myvuvuzela.github.io/git/blobs/0920578f561e7f6edcf37c7caedf38b20540b874";
