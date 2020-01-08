@@ -46,7 +46,7 @@ export const set3DModel   = (obj) => {
 
 export const load3DModel  = (url, texturePath, onProgress) => {
 
-  log(logName + 'load3DModel', url)
+  //log(logName + 'load3DModel', url)
 
   prepareModelNodes()
 
@@ -353,7 +353,7 @@ const parse3DResource = (id, url, json, onComplete) => {
 
   if(!loader) {
 
-    log(logName + 'parse3DResource: added: ' + url)
+    //log(logName + 'parse3DResource: added: ' + url)
 
     loader = new ObjectLoader()
     _loaderURLMap[url] = loader
@@ -396,13 +396,13 @@ const onLoaded3DResource = (text, id, url, texturePath, onComplete, onError) => 
 
 const load3DResource = (id, url, texturePath, onComplete, onProgress, onError) => {
 
-  log(logName + 'load3DResource: id: ' + id)
+  //log(logName + 'load3DResource: id: ' + id)
 
   let parsedModel = _modelIdMap[id]
 
   if(!parsedModel) {
 
-    log(logName + 'load3DResource: added: ' + url)
+    //log(logName + 'load3DResource: added: ' + url)
 
     const fileLoader = new FileLoader()
 
