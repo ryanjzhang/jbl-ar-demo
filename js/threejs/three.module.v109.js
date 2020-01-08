@@ -35237,7 +35237,7 @@ FileLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 
 	constructor: FileLoader,
 
-	load: function ( url, onLoad, onProgress, onError ) {
+	load: async function ( url, onLoad, onProgress, onError ) {
 
 		if ( url === undefined ) url = '';
 
@@ -35282,9 +35282,8 @@ FileLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 		}
 
 		// Check for data: URI
-		var dataUriRegex = /^data:(.*?)(;base64)?,(.*)$/;
+		var dataUriRegex = /^content:(.*?)(;base64)?,(.*)$/;
 		var dataUriRegexResult = url.match( dataUriRegex );
-
 		// Safari can not handle Data URIs through XMLHttpRequest so process manually
 		if ( dataUriRegexResult ) {
 
@@ -35294,7 +35293,9 @@ FileLoader.prototype = Object.assign( Object.create( Loader.prototype ), {
 
 			data = decodeURIComponent( data );
 
-			if ( isBase64 ) data = atob( data );
+			console.log('aaa')
+			console.log(b64)
+			if ( isBase64 ) data = await window.b64.decode(data);
 
 			try {
 
