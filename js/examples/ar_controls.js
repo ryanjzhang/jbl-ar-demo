@@ -12,11 +12,9 @@ const stop = () => {
 const start = () => {
     document.getElementById('share-content').style.display = 'none';
     canShare();
-    var shareBtn = document.getElementById('share-btn');
-
     run()
 }
-
+//check if browser can share, then set button text to share/save
 function canShare() {
     var file = dataURLtoFile(document.getElementById('screenCaptureCanvas').toDataURL(), 'image.png');
     var filesArray = [];
@@ -29,6 +27,7 @@ function canShare() {
     }
 }
 
+//base64 to file
 function dataURLtoFile(dataurl, filename) {
 
     var arr = dataurl.split(','),
@@ -48,19 +47,20 @@ window.shareImage = function shareImage() {
     var canvas = document.getElementById('screenCaptureCanvas');
     var dataUrl = canvas.toDataURL();
     var file = dataURLtoFile(dataUrl, 'image.png');
-    console.log(file);
     var filesArray = [];
     filesArray.push(file);
     var shareBtn = document.getElementById('share-btn')
+    //check if browser can share then share/save screenshot
     if (navigator.canShare && navigator.canShare({ files: filesArray })) {
         navigator.share({
             files: filesArray,
             title: 'Check this out',
-            text: 'Hello friend\nWhat do you think of this look?\n\nRyan',
+            text: 'Hello friend\nWhat do you think of this look?',
         })
             .then(() => console.log('Share was successful.'))
             .catch((error) => console.log('Sharing failed', error));
     } else {
+        //save screenshot
         var link = document.createElement("a");
 
         link.download = 'virtualtryon.png'
