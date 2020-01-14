@@ -7199,6 +7199,22 @@ header {
   top: 0;
   left: 0;
   z-index: 30; }
+#loading {
+  position: absolute;
+  visibility: visible;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  display: -webkit-flexbox;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -webkit-flex-align: center;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  align-items: center;
+  justify-content: center;
+}
 
 .cancel {
   background-color: gray; }

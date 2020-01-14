@@ -45,7 +45,8 @@ function dataURLtoFile(dataurl, filename) {
 }
 
 window.shareImage = function shareImage() {
-    var dataUrl = document.getElementById('screenCaptureCanvas').toDataURL();
+    var canvas = document.getElementById('screenCaptureCanvas');
+    var dataUrl = canvas.toDataURL();
     var file = dataURLtoFile(dataUrl, 'image.png');
     console.log(file);
     var filesArray = [];
@@ -62,9 +63,12 @@ window.shareImage = function shareImage() {
     } else {
         var link = document.createElement("a");
 
-        link.setAttribute("href", dataUrl);
-        link.setAttribute("download", 'image.png');
-        link.click();
+        link.download = 'virtualtryon.png'
+        canvas.toBlob(function(blob) {
+            console.log(blob)
+            link.href = URL.createObjectURL(blob);
+            link.click();
+        });
     }
 }
 

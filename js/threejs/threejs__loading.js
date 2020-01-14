@@ -318,7 +318,7 @@ const handleLoaded3DJson = (json, id, url, texturePath, onComplete, onError) => 
 };
 
 const parse3DResource = (id, url, json, onComplete) => {
-  log(logName + "parse3DResource: id: " + id);
+  //log(logName + "parse3DResource: id: " + id);
 
   let loader = _loaderURLMap[url];
 
@@ -390,7 +390,7 @@ const load3DResource = (id, url, texturePath, onComplete, onProgress, onError) =
 };
 
 const load3DFileList = config => {
-  log(logName + "load3DFileList", config.list);
+  //log(logName + "load3DFileList", config.list);
 
   const fileList = config.list;
   const path = config.path;
@@ -413,7 +413,7 @@ const load3DFileList = config => {
             (id, modelInstance) => {
               // onComplete
 
-              log(logName + "load3DFileList: loaded: " + id);
+              //log(logName + "load3DFileList: loaded: " + id);
 
               obj.loader = modelInstance;
 
