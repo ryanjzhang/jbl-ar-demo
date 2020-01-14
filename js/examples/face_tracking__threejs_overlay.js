@@ -50,7 +50,7 @@ export const configureExample = brfv5Config => {
   // Load the occlusion model (an invisible head). It hides anything behind it.
 
   load3DOcclusionModel("./models/assets/3d/occlusion_head_reference.json", "./models/assets/3d/textures/", null)
-    .then(() => {})
+    .then(() => { })
     .catch(e => {
       error("Could not load 3D occlusion model:", e);
     });
@@ -69,26 +69,30 @@ export const configureExample = brfv5Config => {
     url = "https://api.github.com/repos/myvuvuzela/myvuvuzela.github.io/git/blobs/0920578f561e7f6edcf37c7caedf38b20540b874";
     wasNull = true;
   }
-  request.onreadystatechange = function() {
+  request.onreadystatechange = function () {
     if (this.readyState === this.DONE) {
-        console.log(this.status) // do something; the request has completed
-        var base64 = wasNull ? JSON.parse(request.responseText)["content"] : btoa(request.responseText);
+      console.log(this.status) // do something; the request has completed
+      var base64 = wasNull ? JSON.parse(request.responseText)["content"] : btoa(request.responseText);
 
-  load3DModel("data:text/plain;base64," + base64, null, null)
-    .then(() => {
-      set3DModelByName();
-      render3DScene();
-    })
-    .catch(e => {
-      error("Could not load 3D model:", e);
-    });
+      document.getElementById("loading").style.visibility = "visible";
+
+      load3DModel("data:text/plain;base64," + base64, null, null)
+        .then(() => {
+          set3DModelByName();
+          render3DScene();
+        })
+        .catch(e => {
+          error("Could not load 3D model:", e);
+        });
+      document.getElementById("loading").style.visibility = "hidden";
+
     }
-}
+  }
   request.open("GET", url, true);
 
   request.send();
 
-  
+
 };
 
 export const handleTrackingResults = (brfv5Manager, brfv5Config, canvas) => {
