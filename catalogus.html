@@ -121,7 +121,9 @@
                   <div class="card-content">
                     <div class="media">
                       <div class="media-content">
-                        <p class="title is-4">{{ result.title }}</p>
+                        <a @click="setCurrentModelUrl(result.modelBase)">
+                          <p class="title is-4">{{ result.title }}</p>
+                        </a>
                         <p class="subtitle is-6">{{ result.description }}</p>
                       </div>
                     </div>
