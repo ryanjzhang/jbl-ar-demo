@@ -10,12 +10,15 @@
   </head>
 
   <body onload="startAR()">
+    <!-- start ar container -->
     <div id="__brfv5" class="__brfv5">
       <div class="image-buttons">
         <button class="image-btn button is-info is-light cancel" onclick="history.go(-1)">Cancel</button>
         <button class="image-btn button is-info is-light" onclick="screenCapture()">Take picture!</button>
       </div>
     </div>
+    <!-- end ar container -->
+    <!-- start screenshot/share/save -->
     <div id="share-content">
       <canvas id="screenCaptureCanvas"></canvas>
       <div class="image-buttons">
@@ -27,9 +30,11 @@
         </button>
       </div>
     </div>
+    <!-- end screenshot/share/save -->
     <div id=loading><img src="models/assets/ui/loading.gif"></img>
     </div>
     <script type="module" src="js/examples/ar_controls.js"></script>
+    <!-- bundle created from modules.js to use base64 async -->
     <script src="js/examples/modules_bundle.js" />
   </body>
 </html>

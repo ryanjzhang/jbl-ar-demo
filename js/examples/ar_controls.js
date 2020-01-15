@@ -44,12 +44,14 @@ function dataURLtoFile(dataurl, filename) {
 }
 
 window.shareImage = function shareImage() {
+    //get image from canvas
     var canvas = document.getElementById('screenCaptureCanvas');
     var dataUrl = canvas.toDataURL();
+
+    //add image to file array
     var file = dataURLtoFile(dataUrl, 'image.png');
     var filesArray = [];
     filesArray.push(file);
-    var shareBtn = document.getElementById('share-btn')
     //check if browser can share then share/save screenshot
     if (navigator.canShare && navigator.canShare({ files: filesArray })) {
         navigator.share({
