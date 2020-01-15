@@ -7093,11 +7093,12 @@ header {
     margin-top: 1rem; }
   #main .cat-content {
     display: flex;
-    align-content: center;
-    justify-content: space-evenly;
-    flex-direction: row;
+    align-items: flex-start;
     flex-wrap: wrap;
-    flex: 1; }
+    height: 100%; }
+    #main .cat-content .card-main {
+      width: 25%;
+      padding: 2.5rem; }
 
 .icon-btn {
   border-radius: 2.2rem;
@@ -7199,22 +7200,6 @@ header {
   top: 0;
   left: 0;
   z-index: 30; }
-#loading {
-  position: absolute;
-  visibility: visible;
-  width: 100%;
-  height: 100%;
-  z-index: 1000;
-  display: -webkit-flexbox;
-  display: -ms-flexbox;
-  display: -webkit-flex;
-  display: flex;
-  -webkit-flex-align: center;
-  -ms-flex-align: center;
-  -webkit-align-items: center;
-  align-items: center;
-  justify-content: center;
-}
 
 .cancel {
   background-color: gray; }
@@ -7265,4 +7250,12 @@ header {
   .navbar-menu .navbar-start .navbar-item {
     color: black; }
   #main .row.breadcrumbs {
-    padding-bottom: 0.75rem; } }
+    padding-bottom: 0.75rem; }
+  #main .cat-content .card-main {
+    width: 50%;
+    padding: 1.5rem 3rem 1rem 3rem; } }
+
+@media only screen and (max-width: 768px) {
+  #main .cat-content .card-main {
+    width: 100%;
+    padding: 1.5rem 3rem 1rem 3rem; } }
