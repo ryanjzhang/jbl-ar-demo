@@ -1,20 +1,21 @@
 "use strict";
 
-document.addEventListener("DOMContentLoaded", () => {
+/*
+The code below handles the hamburger menu that is only displayed
+on mobile devices.
+*/
+document.addEventListener("DOMContentLoaded", function () {
   // Get all "navbar-burger" elements
-  const $navbarBurgers = Array.prototype.slice.call(
-    document.querySelectorAll(".navbar-burger"),
-    0
-  );
+  var $navbarBurgers = Array.prototype.slice.call(document.querySelectorAll(".navbar-burger"), 0);
 
   // Check if there are any navbar burgers
   if ($navbarBurgers.length > 0) {
     // Add a click event on each of them
-    $navbarBurgers.forEach(el => {
-      el.addEventListener("click", () => {
+    $navbarBurgers.forEach(function (el) {
+      el.addEventListener("click", function () {
         // Get the target from the "data-target" attribute
-        const target = el.dataset.target;
-        const $target = document.getElementById(target);
+        var target = el.dataset.target;
+        var $target = document.getElementById(target);
 
         // Toggle the "is-active" class on both the "navbar-burger" and the "navbar-menu"
         el.classList.toggle("is-active");
@@ -24,8 +25,12 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 });
 
-//android detection
-
+/*
+The code below detexts the operating system of the device of the current user.
+uses the getMobileOperatingSystem() function.
+sets ios.stye.display = "block" if operating system is iOS
+sets android.style.display = "block" if operating system is not iOS
+*/
 function showARElement() {
   var android = document.getElementById("android");
   var ios = document.getElementById("ios");
@@ -34,15 +39,15 @@ function showARElement() {
   }
   // If OS is not iOS, use Android implementation since that is more interactive for Windows users than the iOS implementation.
   else {
-    android.style.display = "block";
-  }
+      android.style.display = "block";
+    }
 }
 
 /* 
-    Determine the mobile operating system. 
-    This function returns one of 'iOS', 'Android', 'Windows Phone', or 'unknown'. 
-    @returns { String } 
-    */
+Determine the mobile operating system. 
+This function returns one of 'iOS', 'Android', 'Windows Phone', or 'unknown'. 
+@returns { String } 
+*/
 function getMobileOperatingSystem() {
   var userAgent = navigator.userAgent || navigator.vendor || window.opera;
 
@@ -63,7 +68,7 @@ function getMobileOperatingSystem() {
   return "unknown";
 }
 
-$(document).ready(function() {
+$(document).ready(function () {
   $(".slider-for").slick({
     slidesToShow: 1,
     slidesToScroll: 1,
