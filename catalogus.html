@@ -159,23 +159,14 @@
             </div>
           </div>
         </div>
-
-        
-
-
-        
         <div id="ios" style="display:none">
           <div id="vueDataGrab-ios">
             <div class="cat-content">
-              <div v-for="result in results">
+              <div class="card-main" v-for="result in results">
                 <div class="card">
                   <div class="card-image">
                     <figure class="image is-4by3">
-                      <a
-                        rel="ar"
-                        v-bind:href="result.modelBase"
-                        v-bind:download="result.title"
-                      >
+                      <a @click="setCurrentModelUrl(result.modelBase)">
                         <img
                           v-bind:src="result.photoBase"
                           alt="Due to an error, the image could not load :("
@@ -186,7 +177,9 @@
                   <div class="card-content">
                     <div class="media">
                       <div class="media-content">
-                        <p class="title is-4">{{ result.title }}</p>
+                        <a @click="setCurrentModelUrl(result.modelBase)">
+                          <p class="title is-4">{{ result.title }}</p>
+                        </a>
                         <p class="subtitle is-6">{{ result.description }}</p>
                       </div>
                     </div>
