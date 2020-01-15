@@ -332,7 +332,7 @@ const parse3DResource = (id, url, json, onComplete) => {
 
     _modelIdMap[id] = object3D;
 
-    log(logName + "_modelIdMap: ", _modelIdMap);
+    //log(logName + "_modelIdMap: ", _modelIdMap);
 
     object3D.name = id;
   }
