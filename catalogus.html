@@ -11,7 +11,7 @@
     </title>
     <link rel="shortcut icon" href="/images/favicon.ico" type="image/x-icon" />
 
-    <!--- css --->
+    <!--- css imports --->
     <link
       rel="stylesheet"
       type="text/css"
@@ -27,7 +27,11 @@
     <link rel="stylesheet" href="css/main.css" type="text/css" />
   </head>
 
+<!--
+showARElement() detects on what operating system the device of the user currently is on
+-->
   <body onload="showARElement()">
+    <!-- navbar -->
     <header>
       <nav class="navbar pencil">
         <div class="navbar-content">
@@ -120,10 +124,11 @@
         </div>
       </div>
     </header>
+    <!-- end of navbar -->
     <div id="main">
       <div class="rows">
         <h1 align="center" class="cat-title">Catalogus</h1>
-
+        <!-- content that only android/pc will see -->
         <div id="android" style="display:none">
           <div id="vueDataGrab-android">
             <div class="cat-content">
@@ -159,6 +164,9 @@
             </div>
           </div>
         </div>
+        <!-- end of android/pc content -->
+
+        <!-- content that only ios will see -->
         <div id="ios" style="display:none">
           <div id="vueDataGrab-ios">
             <div class="cat-content">
@@ -199,8 +207,10 @@
             </div>
           </div>
         </div>
+        <!-- end of ios content -->
       </div>
     </div>
+    <!-- footer -->
     <footer class="footer has-text-centered">
       <div class="container">
         <div class="columns">
@@ -227,8 +237,9 @@
         </div>
       </div>
     </footer>
+    <!-- end of footer -->
 
-    <!--- javascript --->
+    <!--- javascript imports --->
 
     <!-- Google AR Modelviewer -->
     <script
