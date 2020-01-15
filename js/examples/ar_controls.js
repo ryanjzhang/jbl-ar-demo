@@ -14,6 +14,7 @@ const start = () => {
     canShare();
     run()
 }
+
 //check if browser can share, then set button text to share/save
 function canShare() {
     var file = dataURLtoFile(document.getElementById('screenCaptureCanvas').toDataURL(), 'image.png');
@@ -44,6 +45,7 @@ function dataURLtoFile(dataurl, filename) {
 }
 
 window.shareImage = function shareImage() {
+
     //get image from canvas
     var canvas = document.getElementById('screenCaptureCanvas');
     var dataUrl = canvas.toDataURL();
@@ -52,6 +54,7 @@ window.shareImage = function shareImage() {
     var file = dataURLtoFile(dataUrl, 'image.png');
     var filesArray = [];
     filesArray.push(file);
+
     //check if browser can share then share/save screenshot
     if (navigator.canShare && navigator.canShare({ files: filesArray })) {
         navigator.share({
@@ -62,6 +65,7 @@ window.shareImage = function shareImage() {
             .then(() => console.log('Share was successful.'))
             .catch((error) => console.log('Sharing failed', error));
     } else {
+
         //save screenshot
         var link = document.createElement("a");
 
@@ -88,8 +92,8 @@ window.stopAR = function stopAR() {
     stop()
 }
 window.screenCapture = function screenCapture() {
-    //generate image from the camera canvas and three js canvas
 
+    //generate image from the camera canvas and three js canvas
     document.getElementById('share-content').style.display = 'block'
 
     var cameraCanvas0 = document.getElementById("__brfv5__camera_canvas_0")
@@ -108,8 +112,6 @@ window.screenCapture = function screenCapture() {
     screenCaptureContext.drawImage(threeJsCanvas, 0, 0, width, height)
 
     stop()
-
-
 }
 
 
