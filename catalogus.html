@@ -159,23 +159,19 @@
             </div>
           </div>
         </div>
-
-        
-
-
-        
         <div id="ios" style="display:none">
           <div id="vueDataGrab-ios">
             <div class="cat-content">
-              <div v-for="result in results">
+              <div class="card-main" v-for="result in results">
                 <div class="card">
                   <div class="card-image">
                     <figure class="image is-4by3">
+                      <a @click="setCurrentModelUrl(result.modelBase)">
                       <a
-                        rel="ar"
-                        v-bind:href="result.modelBase"
-                        v-bind:download="result.title"
-                      >
+                      rel="ar"
+                      v-bind:href="result.modelBase"
+                      v-bind:download="result.title"
+                    >
                         <img
                           v-bind:src="result.photoBase"
                           alt="Due to an error, the image could not load :("
@@ -186,7 +182,9 @@
                   <div class="card-content">
                     <div class="media">
                       <div class="media-content">
-                        <p class="title is-4">{{ result.title }}</p>
+                        <a @click="setCurrentModelUrl(result.modelBase)">
+                          <p class="title is-4">{{ result.title }}</p>
+                        </a>
                         <p class="subtitle is-6">{{ result.description }}</p>
                       </div>
                     </div>
@@ -209,9 +207,7 @@
           <div class="column is-8-desktop is-offset-2-desktop">
             <p>
               <strong class="has-text-weight-semibold">
-                <a href="https://www.mobile-development.org/"
-                  >Project Mobile Development</a
-                >
+                <a href="https://www.mobile-development.org/">Project Mobile Development</a>
               </strong>
             </p>
             <p>
@@ -224,12 +220,7 @@
             </p>
             <p>
               <a href="http://bulma.io">
-                <img
-                  src="made-with-bulma.png"
-                  alt="Made with Bulma"
-                  width="128"
-                  height="24"
-                />
+                <img src="made-with-bulma.png" alt="Made with Bulma" width="128" height="24" />
               </a>
             </p>
           </div>
