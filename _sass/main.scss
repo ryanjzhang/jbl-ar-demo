@@ -5,9 +5,10 @@ $family-sans-serif: "Helvetica", sans-serif;
 
 //sizes
 $tablet: 1024px;
+$mobile: 768px;
 
 //colors
-$primary:#ff3300;
+$primary: #ff3300;
 $background-grey: #f8f8f8;
 $font-color: black;
 $divider: #e8e8e8;
@@ -192,11 +193,14 @@ header {
 
   .cat-content {
     display: flex;
-    align-content: center;
-    justify-content: space-evenly;
-    flex-direction: row;
+    align-items: flex-start;
     flex-wrap: wrap;
-    flex: 1;
+    height: 100%;
+
+    .card-main {
+      width: 25%;
+      padding: 2.5rem;
+    }
   }
 }
 
@@ -402,5 +406,17 @@ $swatchtime: 0.4s;
     .row.breadcrumbs {
       padding-bottom: 0.75rem;
     }
+  }
+  #main .cat-content .card-main{
+    width: 50%;
+    padding:1.5rem 3rem 1rem 3rem;
+  }
+}
+
+//mobile view
+@media only screen and (max-width: $mobile) {
+  #main .cat-content .card-main{
+    width: 100%;
+    padding:1.5rem 3rem 1rem 3rem;
   }
 }
