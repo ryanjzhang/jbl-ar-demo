@@ -167,6 +167,11 @@
                   <div class="card-image">
                     <figure class="image is-4by3">
                       <a @click="setCurrentModelUrl(result.modelBase)">
+                      <a
+                      rel="ar"
+                      v-bind:href="result.modelBase"
+                      v-bind:download="result.title"
+                    >
                         <img
                           v-bind:src="result.photoBase"
                           alt="Due to an error, the image could not load :("
