@@ -22,7 +22,6 @@ header {
 }
 
 .navbar {
-  // height: 80px;
   padding: 0;
 
   .navbar-item {
@@ -282,7 +281,6 @@ $swatchtime: 0.4s;
   transition: all $swatchtime;
 }
 #ar-container {
-  //position: absolute;
   top: 0;
   left: 0;
   z-index: 30;
@@ -354,12 +352,13 @@ $swatchtime: 0.4s;
     width: 100%;
   }
 }
+// desktop changes
 @media only screen and (min-width: $tablet) {
   #navbarBasicExample {
     display: none;
   }
 }
-// mobile changes
+// tablet changes
 @media only screen and (max-width: $tablet) {
   .navbar.pencil {
     display: none;
@@ -404,7 +403,7 @@ $swatchtime: 0.4s;
   }
 }
 
-//mobile view
+//mobile changes
 @media only screen and (max-width: $mobile) {
   #main .cat-content .card-main{
     width: 100%;
